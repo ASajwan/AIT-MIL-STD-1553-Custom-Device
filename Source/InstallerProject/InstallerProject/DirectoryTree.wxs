@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <PropertyRef Id="WIX_DIR_COMMON_DOCUMENTS" />
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="WIX_DIR_COMMON_DOCUMENTS">
+        <Directory Id="NationalInstrumentsCommonAppData" Name="National Instruments">
+          <Directory Id="VeriStandCommonAppData" Name="NI VeriStand 2014">
+            <Directory Id="VeriStandCustomDevices" Name="Custom Devices">
+              <Directory Id="AIT1553" Name="AIT 1553">
+                <Directory Id="AIT1553Data" Name="Data"/>
+                <Directory Id="AIT1553Docs" Name="Documents"/>
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+</Wix>

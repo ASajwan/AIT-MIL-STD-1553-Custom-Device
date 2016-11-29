@@ -1,0 +1,13 @@
+*** BC ***
+Message: Gun_One
+Parameter: Data_01,8,0,8,1.0000,0.0000,0
+Message: Gun_Two
+Parameter: Data_02,8,0,8,1.0000,0.0000,0
+Message: Get_It
+Parameter: Data_00,1,0,8,1.0000,0.0000,0
+Message: RT-16to15
+Parameter: 16to15_I16,1,0,16,1.0000,0.0000,1
+*** BM ***
+Message: BM_05_T_04
+Parameter: BM_Data_Parm_1,1,0,8,1.0000,0.0000,0
+*** RT ***

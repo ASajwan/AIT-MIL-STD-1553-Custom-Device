@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="002780E5-587C-4AB7-BBA1-2307EBC4B8A5" Name="AIT MIL-STD 1553 Add-on for NI VeriStand 2014 1.0.0.3" Language="1033" Version="1.0.0.3" Manufacturer="Viewpoint Systems" UpgradeCode="B5DCCFC5-F735-40F2-BBFE-7C67BFD849D3">
+    <Package InstallerVersion="300" Compressed="yes" InstallScope="perMachine" Platform="x86" />
+    <MajorUpgrade Schedule="afterInstallInitialize" DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <!--Ensure VeriStand 2014 is installed-->
+    <Property Id="VERISTANDINSTALLED">
+      <DirectorySearch Id="VeriStandInstalledDirectorySearch" Path="[ProgramFilesFolder]\National Instruments\VeriStand 2014" Depth="0">
+        <FileSearch Id="NIVeriStand.exe" Name="NI VeriStand.exe" />
+      </DirectorySearch>
+    </Property>
+    <Condition Message="[ProductName] cannot be installed because VeriStand 2014 is not installed.  Please install VeriStand 2014 before attempting to install the [ProductName].">VERISTANDINSTALLED</Condition>
+
+    <!--Ensure AIT 1553 Drivers are installed-->
+    <Property Id="AIT1553DRIVERSINSTALLED">
+      <DirectorySearch Id="AIT1553DriversInstalledDirectorySearch" Path="[ProgramFilesFolder]\AIT\MIL-STD-1553 SDK v2.39\Instrumentation\Utilities\Configuration Converter" Depth="0">
+        <FileSearch Id="convert.exe" Name="convert.exe" />
+      </DirectorySearch>
+    </Property>
+    <Condition Message="[ProductName] cannot be installed because AIT 1553 Drivers are not installed.  Please install AIT 1553 Drivers, MIL-STD-1553 LabVIEW Instrument Driver (32-bit) v2.39.1 (exe), before attempting to install the [ProductName].">AIT1553DRIVERSINSTALLED</Condition>
+
+    <Feature Id="ProductFeature" Title="AIT MIL-STD-1553 VeriStand 2013 Driver" Level="1">
+      <ComponentRef Id="DriverFiles" />
+      <ComponentRef Id="DriverSupportFiles" />
+      <ComponentRef Id="DriverDocumentsFiles" />
+    </Feature>
+
+    <WixVariable Id="WixUILicenseRtf" Value="EULA.rtf" />
+    <!--Add a UI that only shows a welcome screen, EULA, installing, and exit
+    http://stackoverflow.com/questions/200743/wix-script-with-only-welcome-and-completed-screens/259685#259685
+    -->
+    <UI Id="UserInterface">
+      <Property Id="WIXUI_INSTALLDIR" Value="TARGETDIR" />
+      <Property Id="WixUI_Mode" Value="Custom" />
+
+      <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
+      <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="9" Bold="yes" />
+      <TextStyle Id="WixUI_Font_Title"  FaceName="Tahoma" Size="9" Bold="yes" />
+
+      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+
+      <DialogRef Id="ProgressDlg" />
+      <DialogRef Id="ErrorDlg" />
+      <DialogRef Id="FilesInUse" />
+      <DialogRef Id="FatalError" />
+      <DialogRef Id="UserExit" />
+      <DialogRef Id="WelcomeEulaDlg" />
+
+      <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="EndDialog" Value="Return" Order="2"></Publish>
+    </UI>
+    <UIRef Id="WixUI_Common" />
+
+    <!--show the readme file after it runs and only on install-->
+    <Property Id="WixShellExecTarget" Value="[#AITMILSTD1553VeriStand2014AddOnReadme.rtf]" />
+    <CustomAction Id="LaunchFile"
+        BinaryKey="WixCA"
+        DllEntry="WixShellExec"
+        Impersonate="yes" />
+
+    <InstallExecuteSequence>
+      <Custom Action='LaunchFile' After='InstallFinalize'>NOT Installed</Custom>
+    </InstallExecuteSequence>
+  </Product>
+
+
+</Wix>

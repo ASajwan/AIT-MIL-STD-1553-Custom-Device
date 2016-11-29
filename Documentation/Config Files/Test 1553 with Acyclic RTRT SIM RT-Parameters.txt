@@ -1,0 +1,21 @@
+*** BC ***
+Message: Gun_One
+Parameter: Data_01,8,0,8,1.0000,0.0000,0
+Message: Gun_Two
+Parameter: Data_02,8,0,8,1.0000,0.0000,0
+Message: Get_It
+Parameter: Data_00,1,0,8,1.0000,0.0000,0
+Message: RT-16to15
+Parameter: Acyclic Data,1,0,16,1.0000,0.0000,1
+*** BM ***
+Message: BM_05_T_04
+Parameter: BM_Data_Parm_1,1,0,8,1.0000,0.0000,0
+*** RT ***
+Message: RT_05_T_04_00
+Parameter: RT Data T,1,0,8,1.0000,0.0000,0
+Message: RT_10_T_10_00
+Parameter: 16T,1,0,16,1.0000,0.0000,1
+Message: RT_0B_R_0A_00
+Parameter: RT Data R,8,0,8,1.0000,0.0000,0
+Message: RT_0F_R_0F_00
+Parameter: 15R,1,0,16,1.0000,0.0000,1

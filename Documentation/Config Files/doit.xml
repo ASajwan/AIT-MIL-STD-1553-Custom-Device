@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel1553 xmlns="http://www.aviftech.com/Schemas/Databus/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.aviftech.com/Schemas/Databus/ file:///C:/Program%20Files%20(x86)/AIT/Flight%20Simulyzer/AIT_1553.xsd" channelNumber="1" couplingMode="isolated" busAmplitude="100" protocol1553="1553B" responseTimeout="14">
+    <simulation>
+        <busController externalTriggerLine="0" initialBus="primary" retryMode="alternate" serviceRequestAllowed="true" startOnExternalTrigger="false">
+            <milMessageBuffers>
+                <messageBuffer messageCount="1" messageBufferID="0">
+                    <messageData>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                    </messageData>
+                </messageBuffer>
+            </milMessageBuffers>
+            <milBCInstructions>
+                <milXferInstruction milXferID="0">
+                    <milXferBCRT rtAddress="0" rtSubAddress="1" wordCount="1" messageBufferID="0" milXferEnabled="true" milXferGapTime="14" milXferRetryEnabled="true" milXferExpectedResp="automatic" milXferStatusWordMask="11111111111"/>
+                </milXferInstruction>
+            </milBCInstructions>
+            <milBCMinorFrames>
+                <milBCMinorFrame milBCMinorFrameID="0">
+                    <milXferRef milXferID="0"/>
+                </milBCMinorFrame>
+            </milBCMinorFrames>
+            <milBCMajorFrames>
+                <milBCMajorFrame milMajorFrameID="0" minorFrameTime="500">
+                    <minorFrameRef milBCMinorFrameID="0"/>
+                </milBCMajorFrame>
+            </milBCMajorFrames>
+        </busController>
+        <remoteTerminals>
+            <remoteTerminal rtMode="Simulation" rtAddress="5" primaryBusEnabled="true" secondaryBusEnabled="true" responseTime="4.00">
+                <initialStatusWord>
+                    <milStatusWord messageError="false" instrumentation="false" serviceRequest="false" reserved1="false" reserved2="false" reserved3="false" broadcastCommand="false" busy="false" subsystemFlag="false" dynamicBusControl="false" terminalFlag="false"/>
+                </initialStatusWord>
+                <messageBuffer messageCount="1" messageBufferID="0">
+                    <messageData>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                    </messageData>
+                </messageBuffer>
+                <messageBuffer messageCount="1" messageBufferID="1">
+                    <messageData>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                    </messageData>
+                </messageBuffer>
+                <rtSubAddress rtSubAddress="1" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="1" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="2" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="2" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="3" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="3" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="4" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="4" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="5" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="5" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="6" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="6" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="7" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="7" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="8" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="8" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="9" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="9" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="10" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="10" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="11" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="11" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="12" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="12" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="13" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="13" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="14" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="14" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="15" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="15" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="16" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="16" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="17" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="17" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="18" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="18" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="19" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="19" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="20" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="20" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="21" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="21" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="22" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="22" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="23" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="23" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="24" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="24" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="25" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="25" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="26" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="26" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="27" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="27" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="28" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="28" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="29" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="29" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="30" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtSubAddress rtSubAddress="30" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtSubAddress>
+                <rtModeCode rtModeCode="0" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="0" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="1" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="1" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="2" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="2" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="3" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="3" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="4" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="4" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="5" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="5" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="6" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="6" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="7" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="7" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="8" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="8" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="9" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="9" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="10" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="10" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="11" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="11" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="12" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="12" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="13" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="13" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="14" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="14" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="15" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="15" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="16" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="16" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="17" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="17" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="18" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="18" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="19" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="19" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="20" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="20" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="21" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="21" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="22" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="22" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="23" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="23" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="24" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="24" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="25" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="25" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="26" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="26" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="27" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="27" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="28" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="28" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="29" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="29" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="30" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="30" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="31" enabled="true" direction="rx" messageBufferID="1">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+                <rtModeCode rtModeCode="31" enabled="true" direction="tx" messageBufferID="0">
+                    <milRTSubaddressStatusWordControl statusWordModifyNext="false" statusWordModifyMask="0000" statusWordModifyType="OR"/>
+                </rtModeCode>
+            </remoteTerminal>
+        </remoteTerminals>
+        <busMonitor bufferSize="0" statusWordMask="07FF">
+            <illegalCommands>
+                <milAddressSet invert="false"/>
+            </illegalCommands>
+            <simpleFilter>
+                <milAddressSet invert="true">
+                    <modeCommand rtAddress="4" milModeCode="0_Dynamic_Bus_Control" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="1_Synchronize_Transmit" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="2_Transmit_Status_Word" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="3_Initiate_Self_Test" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="4_Transmitter_Shutdown" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="5_Override_Transmitter_Shutdown" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="6_Inhibit_Terminal_Flag_Bit" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="7_Override_Inhibit_Terminal_Flag_Bit" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="8_Reset_RT" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="9_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="10_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="11_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="12_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="13_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="14_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="15_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="16_Transmit_Vector_Word" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="17_Synchronize_Receive" direction="rx"/>
+                    <modeCommand rtAddress="4" milModeCode="18_Transmit_Last_Command" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="19_Transmit_Bit_Word" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="20_Selected_Transmitter_Shutdown" direction="rx"/>
+                    <modeCommand rtAddress="4" milModeCode="21_Override_Selected_Transmitter_Shutdown" direction="rx"/>
+                    <modeCommand rtAddress="4" milModeCode="22_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="4" milModeCode="22_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="23_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="4" milModeCode="23_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="24_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="4" milModeCode="24_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="25_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="4" milModeCode="25_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="26_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="4" milModeCode="26_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="27_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="4" milModeCode="27_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="28_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="4" milModeCode="28_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="29_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="4" milModeCode="29_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="30_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="4" milModeCode="30_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="4" milModeCode="31_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="4" milModeCode="31_Reserved" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="1" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="1" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="2" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="2" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="3" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="3" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="4" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="4" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="5" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="5" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="6" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="6" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="7" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="7" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="8" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="8" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="9" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="9" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="10" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="10" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="11" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="11" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="12" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="12" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="13" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="13" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="14" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="14" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="15" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="15" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="16" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="16" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="17" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="17" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="18" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="18" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="19" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="19" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="20" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="20" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="21" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="21" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="22" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="22" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="23" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="23" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="24" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="24" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="25" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="25" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="26" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="26" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="27" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="27" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="28" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="28" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="29" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="29" direction="tx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="30" direction="rx"/>
+                    <subAddressCommand rtAddress="4" rtSubAddress="30" direction="tx"/>
+                </milAddressSet>
+            </simpleFilter>
+        </busMonitor>
+    </simulation>
+</channel1553>

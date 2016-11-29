@@ -1,0 +1,2091 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 rel. 3 sp1 (http://www.altova.com) by John Cole (Avionics Interface Technologies) -->
+<xs:schema xmlns="http://www.aviftech.com/Schemas/Databus/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:avif="http://www.aviftech.com/Schemas/Databus/" targetNamespace="http://www.aviftech.com/Schemas/Databus/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:attributeGroup name="nameGroup">
+		<xs:annotation>
+			<xs:documentation> Generic Attribute to hold the name of objects</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="name" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="256"/>
+					<xs:whiteSpace value="preserve"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute> 
+	</xs:attributeGroup>
+	<xs:element name="board1553">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Board Module</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="channel1553" maxOccurs="8"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="nameGroup"/>
+			<xs:attribute name="boardSerialNumber">
+				<xs:annotation>
+					<xs:documentation>This option has been deprecated and is not used.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="9999"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="boardIndex" type="xs:unsignedInt" default="0">
+				<xs:annotation>
+					<xs:documentation>This option has been deprecated and is not used.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="boardResourceName">
+				<xs:annotation>
+					<xs:documentation>This option has been deprecated and is not used.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="256"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+		<xs:unique name="ChannelNumberUnique">
+			<xs:selector xpath="avif:channel1553"/>
+			<xs:field xpath="@channelNumber"/>
+		</xs:unique>
+	</xs:element>
+	<xs:element name="boardIndex" type="xs:unsignedInt">
+		<xs:annotation>
+			<xs:documentation>Index of the board in the system list of boards as returned by the device driver. Specify the index to specify the board by its position in the device list derived by the device driver.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="boardSerialNumber">
+		<xs:annotation>
+			<xs:documentation>The serial number of the board in the system. Specify the serial number to specify the board based on the serial number programmed into the hardware at the factory.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:minInclusive value="0"/>
+				<xs:maxInclusive value="9999"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="boardResourceName">
+		<xs:annotation>
+			<xs:documentation>The Resource Name of the board in the system. This string uses the format defined in the Virtual Instrument System Archtecture (VISA) interface.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="1"/>
+				<xs:maxLength value="256"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="channel1553">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Channel consisting of 2 buses (Primary and Secondary)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice>
+					<xs:element name="simulation">
+						<xs:complexType>
+							<xs:choice>
+								<xs:annotation>
+									<xs:documentation>Simulation Channel</xs:documentation>
+								</xs:annotation>
+								<xs:sequence>
+									<xs:element ref="busController"/>
+									<xs:element ref="remoteTerminals" minOccurs="0"/>
+									<xs:element ref="busMonitor" minOccurs="0"/>
+								</xs:sequence>
+								<xs:sequence>
+									<xs:element ref="remoteTerminals"/>
+									<xs:element ref="busMonitor" minOccurs="0"/>
+								</xs:sequence>
+								<xs:sequence>
+									<xs:element ref="busMonitor"/>
+								</xs:sequence>
+							</xs:choice>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="replay">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:annotation>
+									<xs:documentation>Replay Channel</xs:documentation>
+								</xs:annotation>
+								<xs:element name="archiveFilePathName">
+									<xs:annotation>
+										<xs:documentation>Provides the Path to the replay file (the source of the replay data)</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:minLength value="1"/>
+											<xs:maxLength value="256"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="replayTiming">
+									<xs:annotation>
+										<xs:documentation>Defines the timing of the replayed data. Valid values are:
+-absolute    The data is replayed based on the absolute timetags of the messages in the archived file. Messages are replayed when the message timestamp matches the time of the onboard clock. This mode is used for synchronized replay across several channels and boards.
+
+-relative      The data is replayed with the same relative timing between messages on the bus.</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:enumeration value="absolute"/>
+											<xs:enumeration value="relative"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="rtEnabled" minOccurs="0" maxOccurs="32">
+									<xs:annotation>
+										<xs:documentation>Defines if an RT is enabled for replay or not. If it is not enabled for replay, then the data transmitted by the RT in the archive file will not be replayed. For situations where an exteral RT is connected to the bus, that RT could be 'disabled' so that the real RT could respond during the replay operation. If an RT is not specified, it is assumed that that RT is 'enabled' for replay.</xs:documentation>
+									</xs:annotation>
+									<xs:complexType>
+										<xs:attributeGroup ref="rtAddressGroup"/>
+										<xs:attribute name="enabled" type="xs:boolean" use="required"/>
+									</xs:complexType>
+								</xs:element>
+								<xs:element ref="remoteTerminals" minOccurs="0"/>
+								<xs:element ref="busMonitor" minOccurs="0"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+				<xs:choice>
+					<xs:element ref="rtProtocols" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Deprecated.  Use channel1553/remoteTerminals/remoteTerminal/@protocol1553 to specify the protocol</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="remoteTerminals" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>This table defines the protocol and name of each RT. If an RT's protocol is NOT defined, MIL-STD-1553B is assumed.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="remoteTerminal" maxOccurs="32">
+									<xs:complexType>
+										<xs:attributeGroup ref="rtAddressGroup"/>
+										<xs:attributeGroup ref="nameGroup"/>
+										<xs:attributeGroup ref="protocol1553Group"/>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+						<xs:unique name="UniqueRTAddress">
+							<xs:selector xpath="avif:remoteTerminal"/>
+							<xs:field xpath="@rtAddress"/>
+						</xs:unique>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attributeGroup ref="nameGroup"/>
+			<xs:attributeGroup ref="channelNumberGroup"/>
+			<xs:attribute name="couplingMode" use="optional">
+				<xs:annotation>
+					<xs:documentation>Defines the physical bus coupling mode for the channel. Valid values are:
+
+- isolated : MIL-STD-1553 channel is terminated on the card and the channel is electrically isolated from the externally connected bus
+
+- network: A properly terminated MIL-STD-1553 Bus is emulated on the MIL-STD-1553 channel and a stub connection is provided at the front panel suitable for direct connection to a transformer coupled device.
+
+- direct: The MIL-STD-1553 channel is configured for direct coupling to an external bus
+
+- transformer: The MIL-STD-1553 channel is configured for transformer coupling to an external bus. That is, the channel can be directly connected to a bus stub.
+
+- loopback: The MIL-STD-1553 channel is digitally looped back to itself on board. This is used for onboard bus emulation for 1553 modules that do not support the full onboard bus network emulation. This mode is functionally equivalent to 'isolated' mode and is used on modules that do NOT support programmable coupling modes.
+
+- fixed: The MIL-STD-1553 channel is coupled to the externally connected bus network. This mode is  determined by the type of hardware present and is used on modules that do NOT support programmable coupling modes.
+
+If this attribute is not present, a default value of 'isolated' is assumed</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="isolated"/>
+						<xs:enumeration value="transformer"/>
+						<xs:enumeration value="direct"/>
+						<xs:enumeration value="external"/>
+						<xs:enumeration value="loopback"/>
+						<xs:enumeration value="fixed"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="busAmplitude" use="optional">
+				<xs:annotation>
+					<xs:documentation>Defines the output voltage of MIL-STD-1553 bus signal as a percentage of maximum possible. This value only applies to variable voltage capable channels.  Valid values are integers in the range 0-100, where 0 is the mimimum voltage possible and 100 is the maximum voltage possible by the hardware module and associated coupling mode. If this optional attribute is not present a maximum output voltage (value = 100) is assumed.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:maxInclusive value="100"/>
+						<xs:minInclusive value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attributeGroup ref="protocol1553Group">
+				<xs:annotation>
+					<xs:documentation>MIL-STD-1553 A or B, default is B.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+			<xs:attribute name="responseTimeout" default="14">
+				<xs:annotation>
+					<xs:documentation>Defines the Status Word Response Timeout for the channel in Microseconds. Default 14us.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="63"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:attributeGroup name="protocol1553Group">
+		<xs:annotation>
+			<xs:documentation>MIL-STD-1553 A or B</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="protocol1553" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="1553A"/>
+					<xs:enumeration value="1553B"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:element name="busMonitor">
+		<xs:annotation>
+			<xs:documentation>MIL-STD-1553 Bus Monitor</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="illegalCommands" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Defines the given BC Commands that are considered illgal by the BM and therefore flagged as Bus errors.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="milAddressSet"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="simpleFilter" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Defines the set of BC commands/transfers that will  filtered and therefore not stored in the monitor buffer</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="milAddressSet"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="startTrigger" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Defines a trigger condition that will start the capturing of data by the BM. If not specified then the BM will start capturing data on the first word detected on the bus.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:choice>
+							<xs:element ref="milDataWordTriggerCondition"/>
+							<xs:element ref="milErrorTriggerCondition"/>
+							<xs:element ref="milExternalTriggerCondition"/>
+							<xs:element ref="milComplexTriggerCondition"/>
+							<xs:element ref="milSpecifiedWordTriggerCondition"/>
+							<xs:element ref="milCompoundTriggerCondition"/>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="stopTrigger" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Defines a trigger condition that will cause the BM to stop capturing data. If not defined, then the BM captures data until the buffer is full or until the BM is disabled.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:choice>
+							<xs:element ref="milDataWordTriggerCondition"/>
+							<xs:element ref="milErrorTriggerCondition"/>
+							<xs:element ref="milExternalTriggerCondition"/>
+							<xs:element ref="milComplexTriggerCondition"/>
+							<xs:element ref="milSpecifiedWordTriggerCondition"/>
+							<xs:element ref="milCompoundTriggerCondition"/>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="strobeTrigger" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Defines the trigger condition that causes a strobe signal to be generated.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:choice>
+							<xs:element ref="milDataWordTriggerCondition"/>
+							<xs:element ref="milErrorTriggerCondition"/>
+							<xs:element ref="milExternalTriggerCondition"/>
+							<xs:element ref="milComplexTriggerCondition"/>
+							<xs:element ref="milSpecifiedWordTriggerCondition"/>
+							<xs:element ref="milCompoundTriggerCondition"/>
+						</xs:choice>
+						<xs:attribute name="externalStrobeLine" use="required">
+							<xs:annotation>
+								<xs:documentation>Defines which of the 10 DIO lines of the hardware to generate the strobe signal on</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:unsignedInt">
+									<xs:minInclusive value="0"/>
+									<xs:maxInclusive value="9"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="nameGroup"/>
+			<xs:attribute name="bufferSize">
+				<xs:annotation>
+					<xs:documentation>Defines the number of entries that can be stored in the BM Buffer when capturing data. The maximum number of entries possible is hardware module dependent. </xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt"/>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="statusWordMask">
+				<xs:annotation>
+					<xs:documentation>Defines the bits in the status words that when set are to be considered an error by the Bus Monitor. Only the low order 11 bits are considered (not the RT field).</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:hexBinary">
+						<xs:length value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="singleShot" type="xs:boolean" default="true">
+				<xs:annotation>
+					<xs:documentation>Sets the bus monitor in either single-shot or circular buffer mode. Default: True, single-shot mode. Circular buffer mode requires registering a half-buffer interrupt or otherwise keeping up with reads in order to prevent data loss.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="bufferSplit" default="100">
+				<xs:annotation>
+					<xs:documentation>The percentage of the buffer dedicated to post trigger data. Default: 100</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="busController">
+		<xs:annotation>
+			<xs:documentation>MIL-STD-1553 Bus Controller</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="milMessageBuffers"/>
+				<xs:element ref="milBCInstructions"/>
+				<xs:choice>
+					<xs:sequence>
+						<xs:element ref="milBCAcyclicFrames"/>
+					</xs:sequence>
+					<xs:sequence>
+						<xs:element ref="milBCMinorFrames"/>
+						<xs:element ref="milBCMajorFrames"/>
+						<xs:element ref="milBCAcyclicFrames" minOccurs="0"/>
+					</xs:sequence>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attributeGroup ref="nameGroup"/>
+			<xs:attribute name="externalTriggerLine">
+				<xs:annotation>
+					<xs:documentation>Defines which of the external DIO/Trigger lines are to be used as input to the BC (for use if startOnExternalTrigger = true). Default value is 0.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="9"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="initialBus">
+				<xs:annotation>
+					<xs:documentation>Defines the initial bus 'primary' or 'secondary' to which BC commands will be issued. Default value is 'primary'. This value can be overridden if a transfer specifies a milXferBus.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="primary"/>
+						<xs:enumeration value="secondary"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="retryMode">
+				<xs:annotation>
+					<xs:documentation>Sets the retry mode to define how the BC responds when an error occurs on a BC command. Default value is 'alternate'</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="none"/>
+						<xs:enumeration value="alternate"/>
+						<xs:enumeration value="same_then_alternate"/>
+						<xs:enumeration value="twice_same_then_alternate"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="serviceRequestAllowed" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Specifies if the BC automated service request mode code handling capablity is enabled. Default value is 'true' </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="startOnExternalTrigger" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Specifies if the BC operation is to start on an external trigger line pulse. Default value is 'false'</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+		<xs:unique name="majorFrameNameUnique">
+			<xs:selector xpath="avif:milBCMajorFrames/avif:milBCMajorFrame"/>
+			<xs:field xpath="@name"/>
+		</xs:unique>
+		<xs:unique name="acyclicFrameNameUnique">
+			<xs:selector xpath="avif:milBCAcyclicFrames/avif:milBCAcyclicFrame"/>
+			<xs:field xpath="@name"/>
+		</xs:unique>
+		<xs:unique name="messageBufferIDUnique">
+			<xs:selector xpath="avif:milMessageBuffers/avif:messageBuffer"/>
+			<xs:field xpath="@messageBufferID"/>
+		</xs:unique>
+		<xs:key name="messageBufferIDKey">
+			<xs:selector xpath="avif:milMessageBuffers/avif:messageBuffer"/>
+			<xs:field xpath="@messageBufferID"/>
+		</xs:key>
+		<xs:keyref name="messageBCRTBufferIDKeyRef" refer="messageBufferIDKey">
+			<xs:selector xpath="avif:milBCInstructions/avif:milXferInstruction/avif:milXferBCRT"/>
+			<xs:field xpath="@messageBufferID"/>
+		</xs:keyref>
+		<xs:keyref name="messageRTBCBufferIDKeyRef" refer="messageBufferIDKey">
+			<xs:selector xpath="avif:milBCInstructions/avif:milXferInstruction/avif:milXferRTBC"/>
+			<xs:field xpath="@messageBufferID"/>
+		</xs:keyref>
+		<xs:keyref name="messageRTRTBufferIDKeyRef" refer="messageBufferIDKey">
+			<xs:selector xpath="avif:milBCInstructions/avif:milXferInstruction/avif:milXferRTRT"/>
+			<xs:field xpath="@messageBufferID"/>
+		</xs:keyref>
+		<xs:keyref name="messageBCMCBufferIDKeyRef" refer="messageBufferIDKey">
+			<xs:selector xpath="avif:milBCInstructions/avif:milXferInstruction/avif:milXferMC"/>
+			<xs:field xpath="@messageBufferID"/>
+		</xs:keyref>
+		<xs:unique name="transferBCIDUnique">
+			<xs:selector xpath="avif:milBCInstructions/avif:milXferInstruction"/>
+			<xs:field xpath="@milXferID"/>
+		</xs:unique>
+		<xs:key name="transferBCIDKey">
+			<xs:selector xpath="avif:milBCInstructions/avif:milXferInstruction"/>
+			<xs:field xpath="@milXferID"/>
+		</xs:key>
+		<xs:keyref name="transferBCIDMinorFrameKeyRef" refer="transferBCIDKey">
+			<xs:selector xpath="avif:milBCMinorFrames/avif:milBCMinorFrame/avif:milXferRef"/>
+			<xs:field xpath="@milXferID"/>
+		</xs:keyref>
+		<xs:keyref name="transferBCIDAcyclicFrameKeyRef" refer="transferBCIDKey">
+			<xs:selector xpath="avif:milBCAcyclicFrames/avif:milBCAcyclicFrame/avif:milXferRef"/>
+			<xs:field xpath="@milXferID"/>
+		</xs:keyref>
+		<xs:unique name="minorFrameIDUnique">
+			<xs:selector xpath="avif:milBCMinorFrames/avif:milBCMinorFrame"/>
+			<xs:field xpath="@milBCMinorFrameID"/>
+		</xs:unique>
+		<xs:unique name="acyclicFrameIDUnique">
+			<xs:selector xpath="avif:milBCAcyclicFrames/avif:milBCAcyclicFrame"/>
+			<xs:field xpath="@milBCAcyclicFrameID"/>
+		</xs:unique>
+		<xs:unique name="majorFrameIDUnique">
+			<xs:selector xpath="avif:milBCMajorFrames/avif:milBCMajorFrame"/>
+			<xs:field xpath="@milMajorFrameID"/>
+		</xs:unique>
+		<xs:key name="minorFrameIDKey">
+			<xs:selector xpath="avif:milBCMinorFrames/avif:milBCMinorFrame"/>
+			<xs:field xpath="@milBCMinorFrameID"/>
+		</xs:key>
+		<xs:keyref name="minorFrameIDKeyRef" refer="minorFrameIDKey">
+			<xs:selector xpath="avif:milBCMajorFrames/avif:milBCMajorFrame/avif:minorFrameRef"/>
+			<xs:field xpath="@milBCMinorFrameID"/>
+		</xs:keyref>
+	</xs:element>
+	<xs:element name="remoteTerminals">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="remoteTerminal" maxOccurs="32"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="rtAddressKey">
+			<xs:selector xpath="avif:remoteTerminal"/>
+			<xs:field xpath="@rtAddress"/>
+		</xs:unique>
+	</xs:element>
+	<xs:element name="remoteTerminal">
+		<xs:annotation>
+			<xs:documentation>MIL-STD-1553 Remote Terminal</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="initialStatusWord" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Specifies the initial value of the status word for the RT</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:choice>
+							<xs:element ref="milStatusWord"/>
+							<xs:element ref="milStatusWordRaw"/>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="messageBuffer" maxOccurs="unbounded"/>
+				<xs:choice maxOccurs="unbounded">
+					<xs:element ref="rtSubAddress"/>
+					<xs:element ref="rtModeCode"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attributeGroup ref="nameGroup">
+				<xs:annotation>
+					<xs:documentation>Deprecated.  Use channel1553/remoteTerminals/remoteTerminal/@name to specify the name of the RemoteTerminal</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+			<xs:attribute name="rtMode" use="required">
+				<xs:annotation>
+					<xs:documentation>The operational mode of the RT. Valid values are:
+-Simulation: The RT is in full simulation mode
+-Monitor: The RT is in monitor only mode, it does not respond to commands</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Simulation"/>
+						<xs:enumeration value="Monitor"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attributeGroup ref="rtAddressGroup"/>
+			<xs:attribute name="primaryBusEnabled" type="xs:boolean" use="optional">
+				<xs:annotation>
+					<xs:documentation>Specifies if the RT is enabled to respond to commands on the primary bus. If this attribute is NOT specified it is assumed that the RT is enabled on the Primary bus.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="secondaryBusEnabled" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Specifies if the RT is enabled to respond to commands on the secondary bus. If this attribute is NOT specified it is assumed that the RT is enabled on the secondary bus.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="responseTime" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Specifies the response time for the RT in microseconds. If this is not specified, then a response time of 4 microseconds is assumed.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+		<xs:unique name="messageBufferIdField">
+			<xs:selector xpath="avif:messageBuffer"/>
+			<xs:field xpath="@messageBufferID"/>
+		</xs:unique>
+		<xs:key name="messageBufferIdKey">
+			<xs:selector xpath="avif:messageBuffer"/>
+			<xs:field xpath="@messageBufferID"/>
+		</xs:key>
+		<xs:keyref name="messageBufferIDKeyRef" refer="messageBufferIdKey">
+			<xs:selector xpath="avif:rtSubAddress"/>
+			<xs:field xpath="@messageBufferID"/>
+		</xs:keyref>
+		<xs:unique name="rtSubAddressDirUnique">
+			<xs:selector xpath="avif:rtSubAddress"/>
+			<xs:field xpath="@rtSubAddress"/>
+			<xs:field xpath="@direction"/>
+		</xs:unique>
+		<xs:unique name="rtModeCodeUniqe">
+			<xs:selector xpath="avif:rtModeCode"/>
+			<xs:field xpath="@rtModeCode"/>
+			<xs:field xpath="@direction"/>
+		</xs:unique>
+		<xs:keyref name="messageBufferIDModeKeyRef" refer="messageBufferIdKey">
+			<xs:selector xpath="avif:rtModeCode"/>
+			<xs:field xpath="@messageBufferID"/>
+		</xs:keyref>
+	</xs:element>
+	<xs:element name="rtProtocols">
+		<xs:annotation>
+			<xs:documentation>This table defines the protocol of each RT. If an RT's protocol is NOT defined, MIL-STD-1553B is assumed.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rtProtocol" maxOccurs="32">
+					<xs:complexType>
+						<xs:attributeGroup ref="rtAddressGroup"/>
+						<xs:attribute name="protocol1553" use="required">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="1553A"/>
+									<xs:enumeration value="1553B"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="UniqueRTAddress_protocol">
+			<xs:selector xpath="avif:rtProtocol"/>
+			<xs:field xpath="@rtAddress"/>
+		</xs:unique>
+	</xs:element>
+	<xs:attributeGroup name="rtAddressGroup">
+		<xs:annotation>
+			<xs:documentation>The RT Address</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="rtAddress" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:byte">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="31"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="rtSubAddressGroup">
+		<xs:annotation>
+			<xs:documentation>The RT SubAddress Address</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="rtSubAddress" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="31"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:element name="rtSubAddress">
+		<xs:annotation>
+			<xs:documentation>The RT SubAddress</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="milRTSubaddressStatusWordControl" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Specifies how to control the Status Word response handling at an RT Subaddress.
+If this optional element is not present, the following is assumed:
+statusWordModifyNext = false
+statusWordModifyMask = 0x0000
+statusWordModifyType= OR</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="milRTErrorInjection" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="nameGroup"/>
+			<xs:attributeGroup ref="rtSubAddressGroup"/>
+			<xs:attribute name="enabled" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies if the rtSubAddress is enabled or not</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="direction" use="required">
+				<xs:annotation>
+					<xs:documentation>Tx or Rx Subaddress</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="tx"/>
+						<xs:enumeration value="rx"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attributeGroup ref="messageBufferIDGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rtModeCode">
+		<xs:annotation>
+			<xs:documentation>The RT Mode Command </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence minOccurs="0">
+				<xs:element ref="milRTSubaddressStatusWordControl" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Specifies how to control the Status Word response handling at an RT Mode Code.
+If this optional element is not present, the following is assumed:
+statusWordModifyNext = false
+statusWordModifyMask = 0x0000
+statusWordModifyType= OR</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="milRTErrorInjection" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="nameGroup"/>
+			<xs:attributeGroup ref="rtModeCodeGroup"/>
+			<xs:attribute name="enabled" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies if the Mode code is enabled or not</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="direction" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="tx"/>
+						<xs:enumeration value="rx"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attributeGroup ref="messageBufferIDGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attributeGroup name="rtModeCodeGroup">
+		<xs:annotation>
+			<xs:documentation>The Mode Code ID</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="rtModeCode" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="31"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:element name="messageBuffer">
+		<xs:annotation>
+			<xs:documentation>The Buffer of Messages for RT or BC Operations</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="messageData" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="messageCount" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="512"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attributeGroup ref="messageBufferIDGroup">
+				<xs:annotation>
+					<xs:documentation>The unique ID of a message buffer (Unique within the context of the BC or RT)</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+	<xs:attributeGroup name="messageBufferIDGroup">
+		<xs:annotation>
+			<xs:documentation>The unique ID of a message buffer (Unique within the context of the RT)</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="messageBufferID" type="xs:unsignedInt" use="required"/>
+	</xs:attributeGroup>
+	<xs:element name="messageData">
+		<xs:annotation>
+			<xs:documentation>Holder of MIL-STD-1553 Message Data. This element holds 1 to 32 16-bit Datawords</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dataWord" maxOccurs="32"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dataWord">
+		<xs:annotation>
+			<xs:documentation>Holder of MIL-STD-1553 Message Data Words</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:hexBinary">
+				<xs:length value="2"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="milErrorCommandSync">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Command Word Sync Patter Error</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="milSyncPatternGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attributeGroup name="milSyncPatternGroup">
+		<xs:annotation>
+			<xs:documentation>Represents the Sync Pattern for a MIL-STD-1553 Bus word. Each bit of this 6 bit value represents one half bit time of the sync patter. 1 is high and 0 is low</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milSyncPattern" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[0-1]{6}"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:element name="milRTErrorInjection">
+		<xs:annotation>
+			<xs:documentation>Specifies Error Injection on the MIL-STD-1553 Bus</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="milErrorCommandSync"/>
+				<xs:element ref="milErrorDataSync"/>
+				<xs:element ref="milErrorParity"/>
+				<xs:element ref="milErrorManchesterHigh"/>
+				<xs:element ref="milErrorManchesterLow"/>
+				<xs:element ref="milErrorGap"/>
+				<xs:element ref="milErrorWordCountHigh"/>
+				<xs:element ref="milErrorWordCountLow"/>
+				<xs:element ref="milErrorBitCountHigh"/>
+				<xs:element ref="milErrorBitCountLow"/>
+				<xs:element ref="milErrorAlternateBus"/>
+				<xs:element ref="milErrorBothBuses"/>
+				<xs:element ref="milErrorZeroCrossingNegative"/>
+				<xs:element ref="milErrorZeroCrossingPositive"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milBCErrorInjection">
+		<xs:annotation>
+			<xs:documentation>Specifies Error Injection on the MIL-STD-1553 Bus</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="milErrorCommandSync"/>
+				<xs:element ref="milErrorDataSync"/>
+				<xs:element ref="milErrorParity"/>
+				<xs:element ref="milErrorManchesterHigh"/>
+				<xs:element ref="milErrorManchesterLow"/>
+				<xs:element ref="milErrorGap"/>
+				<xs:element ref="milErrorWordCountHigh"/>
+				<xs:element ref="milErrorWordCountLow"/>
+				<xs:element ref="milErrorBitCountHigh"/>
+				<xs:element ref="milErrorBitCountLow"/>
+				<xs:element ref="milErrorAlternateBus"/>
+				<xs:element ref="milErrorBothBuses"/>
+				<xs:element ref="milErrorZeroCrossingNegative"/>
+				<xs:element ref="milErrorZeroCrossingPositive"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milErrorDataSync">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Data Word Sync Patter Error</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="milWordPositionGroup"/>
+			<xs:attributeGroup ref="milSyncPatternGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milErrorParity">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Bus Word Parity Error</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="milWordPositionGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attributeGroup name="milWordPositionGroup">
+		<xs:annotation>
+			<xs:documentation>Index of MIL-STD-1553 Bus Word (0 indicates the command word, 1 indicates the first data word, and 32 indicates the last possible data word)</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milWordPosition" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="32"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="milBitPositionGroup">
+		<xs:annotation>
+			<xs:documentation>Index of a bit withing a MIL-STD-1553 Data Word</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milBitPosition" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="4"/>
+					<xs:maxInclusive value="20"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:element name="milErrorManchesterHigh">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Manchester Encoding (High) Error</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="milWordPositionGroup"/>
+			<xs:attributeGroup ref="milBitPositionGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milErrorManchesterLow">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Manchester Encoding (Low) Error</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="milWordPositionGroup"/>
+			<xs:attributeGroup ref="milBitPositionGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milErrorGap">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Gap Error</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="milWordPositionGroup"/>
+			<xs:attribute name="gapInHalfBits" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies the Gap time to be used in terms of the number of half bit times.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="15"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milErrorWordCountLow">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Word Count Low Error</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="milErrorWordCountHigh">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Word Count High Error</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:attributeGroup name="milBitCountGroup">
+		<xs:annotation>
+			<xs:documentation>Specifies the number of bits for MIL-STD-1553 Error Injection</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milBitCount" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="3"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:element name="milErrorBitCountHigh">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Bit Count High Error</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="milWordPositionGroup"/>
+			<xs:attributeGroup ref="milBitCountGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milErrorBitCountLow">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Bit Count Low Error</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="milWordPositionGroup"/>
+			<xs:attributeGroup ref="milBitCountGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milErrorAlternateBus">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Respond on Alternate Bus Error</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="milErrorZeroCrossingNegative">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Zero Crossing Error (with zero crossing occurring prior to mid-bit time)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="milWordPositionGroup"/>
+			<xs:attributeGroup ref="milBitPositionGroup"/>
+			<xs:attributeGroup ref="milZeroCrossingDeviationGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milErrorBothBuses">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Transmission on both MILbus channels error</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="milErrorZeroCrossingPositive">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Zero Crossing Error (with zero crossing occurring after to mid-bit time)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="milWordPositionGroup"/>
+			<xs:attributeGroup ref="milBitPositionGroup"/>
+			<xs:attributeGroup ref="milZeroCrossingDeviationGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attributeGroup name="milZeroCrossingDeviationGroup">
+		<xs:annotation>
+			<xs:documentation>Specifies the zero crossing deviation from the mid-bit time</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milZeroCrossingDeviation" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="125.0"/>
+					<xs:enumeration value="187.5"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:element name="milStatusWord">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Status Word -- with structured fields</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="rtAddress" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="31"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="messageError" type="xs:boolean" use="required"/>
+			<xs:attribute name="instrumentation" type="xs:boolean" use="required"/>
+			<xs:attribute name="serviceRequest" type="xs:boolean" use="required"/>
+			<xs:attribute name="reserved1" type="xs:boolean" use="optional" default="false"/>
+			<xs:attribute name="reserved2" type="xs:boolean" use="optional" default="false"/>
+			<xs:attribute name="reserved3" type="xs:boolean" use="optional" default="false"/>
+			<xs:attribute name="broadcastCommand" type="xs:boolean" use="required"/>
+			<xs:attribute name="busy" type="xs:boolean" use="required"/>
+			<xs:attribute name="subsystemFlag" type="xs:boolean" use="required"/>
+			<xs:attribute name="dynamicBusControl" type="xs:boolean" use="required"/>
+			<xs:attribute name="terminalFlag" type="xs:boolean" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milStatusWordRaw">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Status Word -- 16 Raw Bits</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="xs:hexBinary">
+				<xs:length value="2"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="milRTSubaddressStatusWordControl">
+		<xs:annotation>
+			<xs:documentation>Specifies how to control the Status Word response handling at an RT Subaddress</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="statusWordModifyNext" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies if the modification of the status word should be applied to the next status word and the last status word (true) or  only to the last status word (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="statusWordModifyMask" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies the mask that will be AND'd or OR'd to the status word </xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:hexBinary">
+						<xs:length value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="statusWordModifyType" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies if the 'statusWordModifyMask' will be AND'd (AND) or OR's (OR) with the status word</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="OR"/>
+						<xs:enumeration value="AND"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milBCInstructions">
+		<xs:annotation>
+			<xs:documentation>Holder of a Bus Controller's Instructions</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="milXferInstruction" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milBCAcyclicFrames">
+		<xs:annotation>
+			<xs:documentation>Holder of a Bus Controller's Acyclic Frames</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="milBCAcyclicFrame" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="milXferRef" maxOccurs="unbounded"/>
+						</xs:sequence>
+						<xs:attribute name="name" use="optional">
+							<xs:annotation>
+								<xs:documentation>A unique name to identify the acyclic frame.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="256"/>
+									<xs:whiteSpace value="preserve"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attributeGroup ref="milBCAcyclicFrameIDGroup"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milBCMajorFrames">
+		<xs:annotation>
+			<xs:documentation>Holder of a Bus Controller's Major Frames</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="milBCMajorFrame" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="minorFrameRef" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attributeGroup ref="milBCMinorFrameIDGroup"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="name" use="optional">
+							<xs:annotation>
+								<xs:documentation>A unique name to identify th e major frame.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="256"/>
+									<xs:whiteSpace value="preserve"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="milMajorFrameID" type="xs:unsignedInt" use="required">
+							<xs:annotation>
+								<xs:documentation>The unique ID of the BC Major Frame</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="minorFrameTime" use="required">
+							<xs:annotation>
+								<xs:documentation>The Minor Frame Time in microseconds</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:unsignedInt">
+									<xs:minInclusive value="0"/>
+									<xs:maxInclusive value="1048575"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="transmitCount" use="optional" default="0">
+							<xs:annotation>
+								<xs:documentation>The number of times to transmit this major frame before stopping. Default is 0, which means the major frame will transmit continuously.</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milBCMinorFrames">
+		<xs:annotation>
+			<xs:documentation>Holder of a Bus Controller's Minor Frames</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="milBCMinorFrame" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milMessageBuffers">
+		<xs:annotation>
+			<xs:documentation>Holder of a BC's or RT's Message Buffer Queues </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="messageBuffer" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milXferBCRT">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 BC to RT Transfer</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="milBCErrorInjection" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="nameGroup"/>
+			<xs:attributeGroup ref="rtAddressGroup"/>
+			<xs:attributeGroup ref="rtSubAddressGroup"/>
+			<xs:attributeGroup ref="wordCountGroup"/>
+			<xs:attributeGroup ref="messageBufferIDGroup"/>
+			<xs:attributeGroup ref="milXferEnabledGroup"/>
+			<xs:attributeGroup ref="milXferBusGroup">
+				<xs:annotation>
+					<xs:documentation>Defines the initial Bus on which the BC Transfer command will be issued. If specified, this overrides the busController initialBus setting.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+			<xs:attributeGroup ref="milXferGapModeGroup">
+				<xs:annotation>
+					<xs:documentation>The Gap mode for a MIL-STD-1553 transfer. Valid values:
+- delay: transfer gap is measured from the start of one message to the start of the next message. In this mode, the valid range for the milXferGapTime is 4 to 16383 us.
+- standard: transfer gap is measured from the mid-bit zero crossing of the last bit of one message to the mid-zero crossing of the next command word sync.  In this mode, the valid range for the milXferGapTime is 4 to 16383 us.
+- fast: same as standard mode, but with 0.25us resolution. In this mode, the valid range for the milXferGapTime is 4 to 19.75 us.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+			<xs:attributeGroup ref="milXferGapTimeGroup">
+				<xs:annotation>
+					<xs:documentation>The Gap time for a MIL-STD-1553 Transfer (in Microseconds). The functionality and valid range for this setting varies depending on the milXferGapMode. Default value is 14us.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+			<xs:attributeGroup ref="milXferRetryEnabledGroup"/>
+			<xs:attributeGroup ref="milXferExpectedRespGroup"/>
+			<xs:attributeGroup ref="milXferStatusWordMaskGroup">
+				<xs:annotation>
+					<xs:documentation>Defines the status word exception mask for the transfer. If this mask matches any of the bits in the status word, a status word exception event occurs.
+	
+	This specifies the lower 11-bits of the Status word only.
+	
+	Default value is: 11111111111</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milXferRTBC">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 RT to BC Transfer</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="milBCErrorInjection" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="nameGroup"/>
+			<xs:attributeGroup ref="rtAddressGroup"/>
+			<xs:attributeGroup ref="rtSubAddressGroup"/>
+			<xs:attributeGroup ref="wordCountGroup"/>
+			<xs:attributeGroup ref="messageBufferIDGroup"/>
+			<xs:attributeGroup ref="milXferEnabledGroup"/>
+			<xs:attributeGroup ref="milXferBusGroup">
+				<xs:annotation>
+					<xs:documentation>Defines the initial Bus on which the BC Transfer command will be issued. If specified, this overrides the busController initialBus setting.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+			<xs:attributeGroup ref="milXferGapModeGroup"/>
+			<xs:attributeGroup ref="milXferGapTimeGroup"/>
+			<xs:attributeGroup ref="milXferRetryEnabledGroup"/>
+			<xs:attributeGroup ref="milXferExpectedRespGroup"/>
+			<xs:attributeGroup ref="milXferStatusWordMaskGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milXferMC">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Mode Code Transfer</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="milBCErrorInjection" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="nameGroup"/>
+			<xs:attributeGroup ref="rtAddressGroup"/>
+			<xs:attribute name="rtSubAddress" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies the RT Subaddress. Valid Values are 0 or 31</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:pattern value="0|31"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attributeGroup ref="milModeCodeGroup"/>
+			<xs:attributeGroup ref="messageBufferIDGroup"/>
+			<xs:attributeGroup ref="milXferEnabledGroup"/>
+			<xs:attributeGroup ref="milXferBusGroup">
+				<xs:annotation>
+					<xs:documentation>Defines the initial Bus on which the BC Transfer command will be issued. If specified, this overrides the busController initialBus setting.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+			<xs:attributeGroup ref="milXferGapModeGroup"/>
+			<xs:attributeGroup ref="milXferGapTimeGroup"/>
+			<xs:attributeGroup ref="milXferRetryEnabledGroup"/>
+			<xs:attributeGroup ref="milXferExpectedRespGroup"/>
+			<xs:attributeGroup ref="milXferStatusWordMaskGroup"/>
+			<xs:attribute name="direction" use="optional">
+				<xs:annotation>
+					<xs:documentation>Defines the direction of the mode code. If not specified, this will default to the direction specified by 1553B mode codes, or to transmit for reserved mode codes.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="tx"/>
+						<xs:enumeration value="rx"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milXferRTRT">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 RT to RT Transfer</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="txRTAddresses">
+					<xs:complexType>
+						<xs:attributeGroup ref="rtAddressGroup"/>
+						<xs:attributeGroup ref="rtSubAddressGroup"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="rxRTAddresses">
+					<xs:complexType>
+						<xs:attributeGroup ref="rtAddressGroup"/>
+						<xs:attributeGroup ref="rtSubAddressGroup"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="milBCErrorInjection" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="nameGroup"/>
+			<xs:attributeGroup ref="wordCountGroup"/>
+			<xs:attributeGroup ref="messageBufferIDGroup"/>
+			<xs:attributeGroup ref="milXferEnabledGroup"/>
+			<xs:attributeGroup ref="milXferBusGroup">
+				<xs:annotation>
+					<xs:documentation>Defines the initial Bus on which the BC Transfer command will be issued. If specified, this overrides the busController initialBus setting.</xs:documentation>
+				</xs:annotation>
+			</xs:attributeGroup>
+			<xs:attributeGroup ref="milXferGapTimeGroup"/>
+			<xs:attributeGroup ref="milXferRetryEnabledGroup"/>
+			<xs:attributeGroup ref="milXferExpectedRespGroup"/>
+			<xs:attributeGroup ref="milXferStatusWordMaskGroup"/>
+			<xs:attributeGroup ref="milXferGapModeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attributeGroup name="wordCountGroup">
+		<xs:annotation>
+			<xs:documentation>The number of Data Words for a MIL-STD-1553 Bus Transfer</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="wordCount" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:unsignedByte">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="32"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="milXferGapTimeGroup">
+		<xs:annotation>
+			<xs:documentation>The Gap time for a MIL-STD-1553 Transfer (in Microseconds). Default value is 14us.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milXferGapTime">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="4"/>
+					<xs:maxInclusive value="16383"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="milXferRetryEnabledGroup">
+		<xs:annotation>
+			<xs:documentation>Defines if retry is enabled for a MIL-STD-1553 BC Transfer</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milXferRetryEnabled" type="xs:boolean"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="milXferEnabledGroup">
+		<xs:annotation>
+			<xs:documentation>Defines if a MIL-STD-1553 BC Transfer is enabled or not</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milXferEnabled" type="xs:boolean" use="required"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="milXferBusGroup">
+		<xs:annotation>
+			<xs:documentation>Defines the initial Bus the BC Transfer command will be issued to.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milXferBus" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="primary"/>
+					<xs:enumeration value="secondary"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="milXferExpectedRespGroup">
+		<xs:annotation>
+			<xs:documentation>Defines the response expected (from the RT) for a BC Command. Valid values are:
+	- automatic: This is the default value. The expected response is determined automatically based on the transfer and address or Mode code
+	
+	- noresp_stat1: Do not expect a status word response from RT
+	
+	- noresp_stat2: Do not expect a status word response from the receiving RT (for RT-RT transfers only).</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milXferExpectedResp">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="automatic"/>
+					<xs:enumeration value="noresp_stat1"/>
+					<xs:enumeration value="noresp_stat2"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="milXferStatusWordMaskGroup">
+		<xs:annotation>
+			<xs:documentation>Defines the status word expection mask for the transfer. If this mask matches any of the bits in the status word, a status work expection event occurs.
+	
+	This specifies the lower 11-bits of the Status word only.
+	
+	Default value is: 11111111111</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milXferStatusWordMask">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="[0-1]{11}"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="milXferIDGroup">
+		<xs:annotation>
+			<xs:documentation>The unique ID for a BC Transfer</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milXferID" type="xs:unsignedInt" use="required"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="milModeCodeGroup">
+		<xs:annotation>
+			<xs:documentation>Defines a MIL-STD-1553 Mode Code</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milModeCode" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="0_Dynamic_Bus_Control"/>
+					<xs:enumeration value="1_Synchronize_Transmit"/>
+					<xs:enumeration value="2_Transmit_Status_Word"/>
+					<xs:enumeration value="3_Initiate_Self_Test"/>
+					<xs:enumeration value="4_Transmitter_Shutdown"/>
+					<xs:enumeration value="5_Override_Transmitter_Shutdown"/>
+					<xs:enumeration value="6_Inhibit_Terminal_Flag_Bit"/>
+					<xs:enumeration value="7_Override_Inhibit_Terminal_Flag_Bit"/>
+					<xs:enumeration value="8_Reset_RT"/>
+					<xs:enumeration value="9_Reserved"/>
+					<xs:enumeration value="10_Reserved"/>
+					<xs:enumeration value="11_Reserved"/>
+					<xs:enumeration value="12_Reserved"/>
+					<xs:enumeration value="13_Reserved"/>
+					<xs:enumeration value="14_Reserved"/>
+					<xs:enumeration value="15_Reserved"/>
+					<xs:enumeration value="16_Transmit_Vector_Word"/>
+					<xs:enumeration value="17_Synchronize_Receive"/>
+					<xs:enumeration value="18_Transmit_Last_Command"/>
+					<xs:enumeration value="19_Transmit_Bit_Word"/>
+					<xs:enumeration value="20_Selected_Transmitter_Shutdown"/>
+					<xs:enumeration value="21_Override_Selected_Transmitter_Shutdown"/>
+					<xs:enumeration value="22_Reserved"/>
+					<xs:enumeration value="23_Reserved"/>
+					<xs:enumeration value="24_Reserved"/>
+					<xs:enumeration value="25_Reserved"/>
+					<xs:enumeration value="26_Reserved"/>
+					<xs:enumeration value="27_Reserved"/>
+					<xs:enumeration value="28_Reserved"/>
+					<xs:enumeration value="29_Reserved"/>
+					<xs:enumeration value="30_Reserved"/>
+					<xs:enumeration value="31_Reserved"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:element name="milXferDelay">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Delay Instruction</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="nameGroup"/>
+			<xs:attribute name="delayTime" use="required">
+				<xs:annotation>
+					<xs:documentation>Defines the delay time in microseconds</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="16000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milXferStrobe">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Strobe Instruction</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="nameGroup"/>
+			<xs:attribute name="strobeLine" use="required">
+				<xs:annotation>
+					<xs:documentation>Defines the external discrete line to strobe.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milBCMinorFrame">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Bus Controller Minor Frame</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="milXferRef" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="milBCMinorFrameIDGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milXferInstruction">
+		<xs:annotation>
+			<xs:documentation>A MIL-STD-1553 Transfer Instruction</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="milXferBCRT"/>
+				<xs:element ref="milXferRTBC"/>
+				<xs:element ref="milXferRTRT"/>
+				<xs:element ref="milXferMC"/>
+				<xs:element ref="milXferDelay"/>
+				<xs:element ref="milXferStrobe"/>
+			</xs:choice>
+			<xs:attributeGroup ref="milXferIDGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milXferRef">
+		<xs:annotation>
+			<xs:documentation>A reference to a BC Transfer</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="milXferIDGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attributeGroup name="milBCMinorFrameIDGroup">
+		<xs:annotation>
+			<xs:documentation>A unique ID for a BC Minor Frame</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milBCMinorFrameID" type="xs:unsignedInt" use="required"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="milBCAcyclicFrameIDGroup">
+		<xs:annotation>
+			<xs:documentation>A unique ID for a BC Acyclic Frame</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milBCAcyclicFrameID" type="xs:unsignedInt" use="required"/>
+	</xs:attributeGroup>
+	<xs:element name="milAddressSet">
+		<xs:annotation>
+			<xs:documentation>Container for a set of Mode Code or Sub Address Commands used by the 1553 Bus Monitor</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence minOccurs="0">
+				<xs:choice maxOccurs="unbounded">
+					<xs:element name="modeCommand">
+						<xs:complexType>
+							<xs:attributeGroup ref="rtAddressGroup"/>
+							<xs:attributeGroup ref="milModeCodeGroup"/>
+							<xs:attribute name="direction" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="tx"/>
+										<xs:enumeration value="rx"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="subAddressCommand">
+						<xs:complexType>
+							<xs:attributeGroup ref="rtAddressGroup"/>
+							<xs:attributeGroup ref="rtSubAddressGroup"/>
+							<xs:attribute name="direction" use="required">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="tx"/>
+										<xs:enumeration value="rx"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="invert" type="xs:boolean" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milDataWordTriggerCondition">
+		<xs:annotation>
+			<xs:documentation>Defines a MIL-STD-1553 Data Word trigger condition </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="mask" use="required">
+				<xs:annotation>
+					<xs:documentation>Defines the mask to be applied to the data word before the comparison takes place</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:hexBinary">
+						<xs:length value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="wordPosition" use="required">
+				<xs:annotation>
+					<xs:documentation>Defines the 1-indexed word position of the data word this comparison is to be exectued on.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="maxValue" use="required">
+				<xs:annotation>
+					<xs:documentation>Defines the maximum value to accept as being a trigger</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:hexBinary">
+						<xs:length value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="minValue" use="required">
+				<xs:annotation>
+					<xs:documentation>Defines the minimum value to accept as being a trigger</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:hexBinary">
+						<xs:length value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="outOfRange" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>Defines if the trigger occurs if the word value (after the mask is applied) is outside the [minValue,maxValue] range. If true, trigger condition is a value outside the range, if 'false' trigger is on values in the range.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milErrorTriggerCondition">
+		<xs:annotation>
+			<xs:documentation>Defines a MIL-STD-1553 Error Trigger condition</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="errorAlternateBus" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>RT responded on the wrong bus</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorWordCountLow" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Fewer words than specified in command word were detected</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorWordCountHigh" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>More words than specified in the command word were detected</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorStatusWord" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Status word error detected in accordance with the status statusWordMask for the BM</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorRTAddress" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Remote Terminal Address Error</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorShortGap" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>A too short Gap error</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorIllegalCommand" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Detection of an illegal command error</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorBothBuses" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Error due to transmission on both busses</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorInterWordGap" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Too short/long interword gap error</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorInvertedSync" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Incorrect Sync waveform error</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorParity" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Parity error</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorBitCountLow" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Too few bits detected in bus word error</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorBitCountHigh" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Too many bits detected in bus word error </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorManchester" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>General Manchester encoding error detected</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorManchesterHigh" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Manchester encoding error with bits stuck high</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorManchesterLow" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Manchester encoding error with bits stuck low</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorNoResponse" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>No response from RT error</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorZeroCrossing" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Incorrect timing of bit zero crossing error</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorMissingDataWords" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Some data words of the transfer were not received</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errorWordCount" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Incorrect number of data words received</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milExternalTriggerCondition">
+		<xs:annotation>
+			<xs:documentation>Defines a MIL-STD-1553 External Trigger condition</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="triggerLine" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies which of the 10 discrete I/O lines will be monitored for the external trigger signal.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedInt">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="9"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milSpecifiedWordTriggerCondition">
+		<xs:annotation>
+			<xs:documentation>Defines a MIL-STD-1553 Command, Status,  or Data Word to compare to a defined value and to trigger if the value is as expected</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="mask" use="required">
+				<xs:annotation>
+					<xs:documentation>Defines the mask to apply to the compared word before doing the comparison to the compareValue</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:hexBinary">
+						<xs:length value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="compareValue" use="required">
+				<xs:annotation>
+					<xs:documentation>Defines the value to compare the word to after the mask is applied</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:hexBinary">
+						<xs:length value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="searchCommandWord" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies if Command words should be compared</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="searchSecondCommandWord" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies if the second Command words (of RT-RT transfers) should be compared</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="searchDataWord" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies if data words should be compared</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="searchStatusWord" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies if status words should be compared</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="searchPrimaryBus" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies if words on the Primary bus should be compared</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="searchSecondaryBus" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies is words on the Secondary bus should be compared</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milComplexTriggerCondition">
+		<xs:annotation>
+			<xs:documentation>Defines a MIL-STD-1553 Complex Trigger Condition (Not valid on some MIL-STD-1553 board modules)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="mask" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies the mask to be applied to the bus word before logical/compare operations are done</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:hexBinary">
+						<xs:length value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="compareValue1" use="required">
+				<xs:annotation>
+					<xs:documentation>Defines the value to be compared with the bus word based on the operator1 operation.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:hexBinary">
+						<xs:length value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="operator1" use="required">
+				<xs:annotation>
+					<xs:documentation>Defines the comparison operator for the first dataword comparison.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="lessThan"/>
+						<xs:enumeration value="equals"/>
+						<xs:enumeration value="notEquals"/>
+						<xs:enumeration value="lessEquals"/>
+						<xs:enumeration value="greaterThan"/>
+						<xs:enumeration value="greaterEquals"/>
+						<xs:enumeration value="alwaysTrue"/>
+						<xs:enumeration value="alwaysFalse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="compareValue2" use="required">
+				<xs:annotation>
+					<xs:documentation>Defines the value to be compared with the bus word based on the operator2 operation.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:hexBinary">
+						<xs:length value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="operator2" use="required">
+				<xs:annotation>
+					<xs:documentation>Defines the comparison operator for the second dataword comparison.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="lessThan"/>
+						<xs:enumeration value="equals"/>
+						<xs:enumeration value="notEquals"/>
+						<xs:enumeration value="lessEquals"/>
+						<xs:enumeration value="greaterThan"/>
+						<xs:enumeration value="greaterEquals"/>
+						<xs:enumeration value="alwaysTrue"/>
+						<xs:enumeration value="alwaysFalse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="logicalOperator" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies the logic operation to be applied to the results of the operations done by compareValue1/operator1 and compareValue2/operator2</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="or"/>
+						<xs:enumeration value="and"/>
+						<xs:enumeration value="xor"/>
+						<xs:enumeration value="nor"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="primaryBusEnabled" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies if words on the primary bus should be inspected</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="secondaryBusEnabled" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>Specifies if words on the secondary bus should be inspected</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="wordIndex" use="optional">
+				<xs:annotation>
+					<xs:documentation>Only data words at the specified index will be inspected. If this attribute is NOT specified then all words will be inspected.
+The word index restarts whenever the transmitting device changes. I.e. In a RT-BC message, to match the command word use word index 0, to match the status word use index 0, and to match the data words use indices 1-32. 
+</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:byte">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="wordType" use="optional">
+				<xs:annotation>
+					<xs:documentation>Specifies the type of word that shall be inspeccted. Valid values are:
+
+-ToFromBC     Match any word to or from the bus controller.
+                        I.e. Any word other than RT-RT data. 
+ 
+-ToBC              Match any word to the bus controller. 
+ 
+-FromBC          Match any word from the bus controller. 
+
+-NonBC           Match the status and data words of an RT-RT transfer. 
+ 
+-ToRT               Match any word to any remote terminal. 
+                        Includes both TX and RX data in an RT-RT transfer. 
+ 
+-FromRT            Match any word from any remote terminal. 
+                        Includes both TX and RX data in an RT-RT transfer. 
+ 
+-ToFromSpecificRT  Match any word to or from a specific remote terminal. 
+                              (must specify RT with attribute rtAddress otherwise RT 1 is assumed)
+
+-ToSpecificRT          Match any word to a specific remote terminal. 
+                               (must specify RT with attribute rtAddress otherwise RT 1 is assumed)
+
+-FromSpecificRT     Match any word from a specific remote terminal. 
+                              (must specify RT with attribute rtAddress otherwise RT 1 is assumed)
+
+-ToFromSpecificRTSA   Match any word to or from a specific remote terminal subaddress. 
+                                     (must specify RT with attribute rtAddress otherwise RT 1 is assumed,
+                                      must specify RT Subaddress with rtSubAddress otherwise RTSA 2 is assumed)
+
+-ToSpecificRTSA           Match any word to a specific remote terminal subaddress. 
+                                     (must specify RT with attribute rtAddress otherwise RT 1 is assumed,
+                                      must specify RT Subaddress with rtSubAddress otherwise RTSA 2 is assumed)
+
+-FromSpecificRTSA       Match any word from a specific remote terminal subaddress. 
+                                     (must specify RT with attribute rtAddress otherwise RT 1 is assumed,
+                                      must specify RT Subaddress with rtSubAddress otherwise RTSA 2 is assumed)
+
+If this attribure is not present, all types of bus words are inspected</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="AnyWord"/>
+						<xs:enumeration value="ToFromBC"/>
+						<xs:enumeration value="ToBC"/>
+						<xs:enumeration value="FromBC"/>
+						<xs:enumeration value="NonBC"/>
+						<xs:enumeration value="ToRT"/>
+						<xs:enumeration value="FromRT"/>
+						<xs:enumeration value="ToFromSpecificRT"/>
+						<xs:enumeration value="ToSpecificRT"/>
+						<xs:enumeration value="FromSpecificRT"/>
+						<xs:enumeration value="ToFromSpecificRTSA"/>
+						<xs:enumeration value="ToSpecificRTSA"/>
+						<xs:enumeration value="FromSpecificRTSA"/>
+						<xs:enumeration value=""/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="rtAddress" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="31"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="rtSubAddress" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="31"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="milCompoundTriggerCondition">
+		<xs:annotation>
+			<xs:documentation>Defines a MIL-STD-1553 Compond Trigger Conditions which consists of a logical ANDing of the results of several other trigger conditions </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="2" maxOccurs="unbounded">
+					<xs:element ref="milDataWordTriggerCondition"/>
+					<xs:element ref="milErrorTriggerCondition"/>
+					<xs:element ref="milExternalTriggerCondition"/>
+					<xs:element ref="milComplexTriggerCondition"/>
+					<xs:element ref="milSpecifiedWordTriggerCondition"/>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:attributeGroup name="channelNumberGroup">
+		<xs:annotation>
+			<xs:documentation>The channel number (1-indexed)</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="channelNumber" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="8"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="milXferGapModeGroup">
+		<xs:annotation>
+			<xs:documentation>The Gap mode for a MIL-STD-1553 transfer. Valid values:
+- delay: transfer gap is measured from the start of one message to the start of the next message. In this mode, the valid range for the milXferGapTime is 4 to 16383 us.
+- standard: transfer gap is measured from the mid-bit zero crossing of the last bit of one message to the mid-zero crossing of the next command word sync.  In this mode, the valid range for the milXferGapTime is 4 to 16383 us.
+- fast: same as standard mode, but with 0.25us resolution. In this mode, the valid range for the milXferGapTime is 4 to 19.75 us.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="milXferGapMode" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="delay"/>
+					<xs:enumeration value="standard"/>
+					<xs:enumeration value="fast"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+</xs:schema>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Variables for various paths on the build computer-->
+<?define SourceBuilt	= C:\Jobs\06624\AIT 1553 Veristand Add-On - 2014\Built\Custom Device\AIT 1553 ?>
+<?define SourceBuiltData	= C:\Jobs\06624\AIT 1553 Veristand Add-On - 2014\Built\Custom Device\AIT 1553\Data ?>
+<?define SourceDocuments	= C:\Jobs\06624\AIT 1553 Veristand Add-On - 2014\Docs ?>
+<?define TestXmlDocuments	= C:\Jobs\06624\AIT 1553 Veristand Add-On - 2014\Config Files ?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="AIT1553" DiskId="1">
+      <Component Id="DriverFiles" Guid="7F4B81FD-8271-45B4-B423-0DCF56FF1303">
+        <File Id="AIT_1553_RT_Driver_VI.vi" Name="AIT 1553 RT Driver VI.vi" Source="$(var.SourceBuilt)\AIT 1553 RT Driver VI.vi" KeyPath="yes" />
+        <File Id="AIT_1553_Engine.llb" Name="AIT 1553 Engine.llb" Source="$(var.SourceBuilt)\AIT 1553 Engine.llb"/>
+        <File Id="AIT_1553_Configuration.llb" Name="AIT 1553 Configuration.llb" Source="$(var.SourceBuilt)\AIT 1553 Configuration.llb"/>
+        <File Id="Veristand1553.lf" Name="1553Veristand.lf" Source="$(var.SourceBuilt)\1553Veristand.lf"/>
+        <File Id="Custom_Device_AIT_1553.xml" Name="Custom Device AIT 1553.xml" Source="$(var.SourceBuilt)\Custom Device AIT 1553.xml"/>
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="AIT1553Data" DiskId="1">
+      <Component Id="DriverSupportFiles" Guid="BF6684EA-F5B5-4739-908A-B5E183AC92AB">
+        <File Id="KEYLIB32.dll" Name="KEYLIB32.dll" Source="$(var.SourceBuiltData)\KEYLIB32.dll" KeyPath="yes" />
+        <File Id="SKCA32.dll" Name="SKCA32.dll" Source="$(var.SourceBuiltData)\SKCA32.dll"/>
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="AIT1553Docs" DiskId="1">
+      <Component Id="DriverDocumentsFiles" Guid="7D84B769-CD18-4CA5-8521-24D22B32F054">
+        <File Id="Test1553.xml" Name="Test 1553.xml" Source="$(var.TestXmlDocuments)\Test 1553.xml" KeyPath="yes" />
+        <File Id="Test1553Parameters.txt" Name="Test 1553-Parameters.txt" Source="$(var.TestXmlDocuments)\Test 1553-Parameters.txt"/>
+        <File Id="AITMILSTD1553VeriStand2014AddOnReadme.rtf" Name="AIT MIL-STD 1553 VeriStand 2014 Add-On Readme.rtf" Source="$(var.SourceDocuments)\AIT MIL-STD 1553 VeriStand 2014 Add-On Readme.rtf"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+</Wix>

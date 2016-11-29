@@ -1,0 +1,535 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CustomDevice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Custom Device.xsd">
+	<XSDVersion Major="2010" Minor="0" Fix="0" Build="0" />
+	<AddMenu>
+		<eng>AIT 1553</eng>
+		<loc>AIT 1553</loc>
+	</AddMenu>
+	<Version>1.0.0.3</Version>
+	<Type>Inline HW Interface</Type>
+	<MaxOccurrence>2474</MaxOccurrence>
+	<MainPageGUID>9F0087A5-0D3D-41AC-84E7-59462FEFDFC4</MainPageGUID>
+	<InitializationVI>
+		<Type>Action</Type>
+		<Item2Launch>
+			<Type>To Common Doc Dir</Type>
+			<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 Initialization VI.vi</Path>
+		</Item2Launch>
+	</InitializationVI>
+	<CustomDeviceVI>
+		<SourceDistribution>
+			<Source>
+				<SupportedTarget>PharlapWindows</SupportedTarget>
+				<Source>
+					<Type>To Common Doc Dir</Type>
+					<Path>Custom Devices\AIT 1553\AIT 1553 RT Driver VI.vi</Path>
+				</Source>
+				<RealTimeSystemDestination>c:\ni-rt\NIVeriStand\Custom Devices\AIT 1553\AIT 1553 RT Driver VI.vi</RealTimeSystemDestination>
+			</Source>
+		</SourceDistribution>
+	</CustomDeviceVI>
+	<Dependencies>
+		<Dependency>
+			<SupportedTarget>PharlapWindows</SupportedTarget>
+			<Source>
+				<Type>To Common Doc Dir</Type>
+				<Path>Custom Devices\AIT 1553\AIT 1553 Engine.llb</Path>
+			</Source>
+			<RealTimeSystemDestination>c:\ni-rt\NIVeriStand\Custom Devices\AIT 1553\AIT 1553 Engine.llb</RealTimeSystemDestination>
+		</Dependency>
+	</Dependencies>
+	<Pages>
+		<Page>
+			<Name>
+				<eng>AIT 1553</eng>
+				<loc>AIT 1553</loc>
+			</Name>
+			<Copy>Copy</Copy>
+			<GUID>9F0087A5-0D3D-41AC-84E7-59462FEFDFC4</GUID>
+			<Glyph>
+				<Type>To Application Data Dir</Type>
+				<Path>System Explorer\Glyphs\daq.png</Path>
+			</Glyph>
+			<Item2Launch>
+				<Type>To Common Doc Dir</Type>
+				<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 Main Page.vi</Path>
+			</Item2Launch>
+			<RunTimeMenu>
+				<MenuItem>
+					<GUID>C4F6D306-C3D2-477F-8B0F-4F0FF7C0D36D</GUID>
+					<Type>Separator</Type>
+					<Name>
+						<eng>.</eng>
+						<loc>.</loc>
+					</Name>
+					<Item2Launch>
+						<Type>Absolute</Type>
+						<Path>.</Path>
+					</Item2Launch>
+				</MenuItem>
+				<MenuItem>
+					<GUID>4BD42C26-0AA1-42C2-86E5-FB8DBEEA74AE</GUID>
+					<Type>Action</Type>
+					<Name>
+						<eng>Disable</eng>
+						<loc>Disable</loc>
+					</Name>
+					<Item2Launch>
+						<Type>To Common Doc Dir</Type>
+						<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\EnableDisable - Right Click.vi</Path>
+					</Item2Launch>
+				</MenuItem>
+			</RunTimeMenu>
+			<ActionVIOnLoad>
+				<Type>To Common Doc Dir</Type>
+				<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\Main On Load Action VI.vi</Path>
+			</ActionVIOnLoad>
+			<ActionVIOnCompile>
+				<Type>To Common Doc Dir</Type>
+				<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 - Conditionally Serialize.vi</Path>
+			</ActionVIOnCompile>
+		</Page>
+		<Page>
+			<Name>
+				<eng>Bus Channel</eng>
+				<loc>Bus Channel</loc>
+			</Name>
+			<DeleteProtection>true</DeleteProtection>
+			<Copy>Copy</Copy>
+			<GUID>BC139571-F945-4F35-A44F-DE66E866FF2F</GUID>
+			<Glyph>
+				<Type>To Application Data Dir</Type>
+				<Path>System Explorer\Glyphs\ni-can ports.png</Path>
+			</Glyph>
+			<Item2Launch>
+				<Type>To Common Doc Dir</Type>
+				<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 Bus Page.vi</Path>
+			</Item2Launch>
+			<RunTimeMenu>
+				<MenuItem>
+					<GUID>CB66F472-A923-4165-AEBC-C7B766070099</GUID>
+					<Type>VI</Type>
+					<Name>
+						<eng>Load Database</eng>
+						<loc>Load Database</loc>
+					</Name>
+					<Item2Launch>
+						<Type>To Common Doc Dir</Type>
+						<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 - Load Database.vi</Path>
+					</Item2Launch>
+				</MenuItem>
+				<MenuItem>
+					<GUID>CB66F472-A923-4165-AEBC-C7B766070000</GUID>
+					<Type>Action</Type>
+					<Name>
+						<eng>Clear Database Selection</eng>
+						<loc>Clear Database Selection</loc>
+					</Name>
+					<Item2Launch>
+						<Type>To Common Doc Dir</Type>
+						<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 - Clear Database.vi</Path>
+					</Item2Launch>
+				</MenuItem>
+				<MenuItem>
+					<GUID>C0EEBAC0-594A-46E5-9AB6-75277B65DDB1</GUID>
+					<Type>VI</Type>
+					<Name>
+						<eng>Export Database Parameters</eng>
+						<loc>Export Database Parameters</loc>
+					</Name>
+					<Item2Launch>
+						<Type>To Common Doc Dir</Type>
+						<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 - Save Database.vi</Path>
+					</Item2Launch>
+				</MenuItem>
+				<MenuItem>
+					<GUID>C4F6D306-C3D2-477F-8B0F-4F0FF7C0D36D</GUID>
+					<Type>Separator</Type>
+					<Name>
+						<eng>.</eng>
+						<loc>.</loc>
+					</Name>
+					<Item2Launch>
+						<Type>Absolute</Type>
+						<Path>.</Path>
+					</Item2Launch>
+				</MenuItem>
+				<MenuItem>
+					<GUID>4BD42C26-0AA1-42C2-86E5-FB8DBEEA74AE</GUID>
+					<Type>Action</Type>
+					<Name>
+						<eng>Disable</eng>
+						<loc>Disable</loc>
+					</Name>
+					<Item2Launch>
+						<Type>To Common Doc Dir</Type>
+						<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\EnableDisable - Right Click.vi</Path>
+					</Item2Launch>
+				</MenuItem>
+			</RunTimeMenu>
+			<ButtonList>
+				<Button>
+					<ID>NIVS_AIM1553_LoadDB</ID>
+					<Glyph>
+						<Type>To Application Data Dir</Type>
+						<Path>System Explorer\Glyphs\add database.png</Path>
+					</Glyph>
+					<Type>Action</Type>
+					<ReferencedGUID>CB66F472-A923-4165-AEBC-C7B766070099</ReferencedGUID>
+					<ButtonText>
+						<eng>Load Database</eng>
+						<loc>Load Database</loc>
+					</ButtonText>
+					<Caption>
+						<eng>Load Database</eng>
+						<loc>Load Database</loc>
+					</Caption>
+					<TipStrip>
+						<eng>Load Database</eng>
+						<loc>Load Database</loc>
+					</TipStrip>
+					<Documentation>
+						<eng />
+						<loc />
+					</Documentation>
+				</Button>
+				<Button>
+					<ID>NIVS_AIM1553_ClearDB</ID>
+					<Glyph>
+						<Type>To Application Data Dir</Type>
+						<Path>System Explorer\Glyphs\EditDelete.png</Path>
+					</Glyph>
+					<Type>Action</Type>
+					<ReferencedGUID>CB66F472-A923-4165-AEBC-C7B766070000</ReferencedGUID>
+					<ButtonText>
+						<eng>Clear Database</eng>
+						<loc>Clear Database</loc>
+					</ButtonText>
+					<Caption>
+						<eng>Clear Database</eng>
+						<loc>Clear Database</loc>
+					</Caption>
+					<TipStrip>
+						<eng>Clear Database</eng>
+						<loc>Clear Database</loc>
+					</TipStrip>
+					<Documentation>
+						<eng />
+						<loc />
+					</Documentation>
+				</Button>
+			</ButtonList>
+		</Page>
+		<Page>
+			<Name>
+				<eng>AIT 1553</eng>
+				<loc>AIT 1553</loc>
+			</Name>
+			<Copy>Copy</Copy>
+			<GUID>D875045B-F708-417A-8922-E756FC4B70ED</GUID>
+			<Glyph>
+				<Type>To Application Data Dir</Type>
+				<Path>System Explorer\Glyphs\daq_disabled.png</Path>
+			</Glyph>
+			<Item2Launch>
+				<Type>To Common Doc Dir</Type>
+				<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 Main Page.vi</Path>
+			</Item2Launch>
+			<RunTimeMenu>
+				<MenuItem>
+					<GUID>C4F6D306-C3D2-477F-8B0F-4F0FF7C0D36D</GUID>
+					<Type>Separator</Type>
+					<Name>
+						<eng>.</eng>
+						<loc>.</loc>
+					</Name>
+					<Item2Launch>
+						<Type>Absolute</Type>
+						<Path>.</Path>
+					</Item2Launch>
+				</MenuItem>
+				<MenuItem>
+					<GUID>4BD42C26-0AA1-42C2-86E5-FB8DBEEA74AE</GUID>
+					<Type>Action</Type>
+					<Name>
+						<eng>Enable</eng>
+						<loc>Enable</loc>
+					</Name>
+					<Item2Launch>
+						<Type>To Common Doc Dir</Type>
+						<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\EnableDisable - Right Click.vi</Path>
+					</Item2Launch>
+				</MenuItem>
+			</RunTimeMenu>
+			<ActionVIOnLoad>
+				<Type>To Common Doc Dir</Type>
+				<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\Main On Load Action VI.vi</Path>
+			</ActionVIOnLoad>
+		</Page>
+		<Page>
+			<Name>
+				<eng>Bus Controller</eng>
+				<loc>Bus Controller</loc>
+			</Name>
+			<DeleteProtection>true</DeleteProtection>
+			<GUID>AD368ECC-83F2-4839-B428-F6389CBFB7B3</GUID>
+			<Glyph>
+				<Type>To Application Data Dir</Type>
+				<Path>System Explorer\Glyphs\xnet incoming.png</Path>
+			</Glyph>
+			<Item2Launch>
+				<Type>To Common Doc Dir</Type>
+				<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 Bus Controller Page.vi</Path>
+			</Item2Launch>
+		</Page>
+		<Page>
+			<Name>
+				<eng>Bus Monitor</eng>
+				<loc>Bus Monitor</loc>
+			</Name>
+			<DeleteProtection>true</DeleteProtection>
+			<GUID>690BD4EE-A4BC-46E2-821B-3839E087B4DA</GUID>
+			<Glyph>
+				<Type>To Application Data Dir</Type>
+				<Path>System Explorer\Glyphs\xnet incoming.png</Path>
+			</Glyph>
+			<Item2Launch>
+				<Type>To Common Doc Dir</Type>
+				<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 Bus Monitor Page.vi</Path>
+			</Item2Launch>
+		</Page>
+		<Page>
+			<Name>
+				<eng>Remote Terminal</eng>
+				<loc>Remote Terminal</loc>
+			</Name>
+			<DeleteProtection>true</DeleteProtection>
+			<GUID>FF657A95-E92F-49B2-B647-7C517829BFDA</GUID>
+			<Glyph>
+				<Type>To Application Data Dir</Type>
+				<Path>System Explorer\Glyphs\ni-can incoming.png</Path>
+			</Glyph>
+			<Item2Launch>
+				<Type>To Common Doc Dir</Type>
+				<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 Remote Terminal Page.vi</Path>
+			</Item2Launch>
+		</Page>
+		<Page>
+			<Name>
+				<eng>Message Parameter Page</eng>
+				<loc>Message Parameter Page</loc>
+			</Name>
+			<GUID>11250030-7C42-42CF-BB8B-798981AF63E1</GUID>
+			<Glyph>
+				<Type>To Application Data Dir</Type>
+				<Path>System Explorer\Glyphs\NI-XNET SinglePoint.png</Path>
+			</Glyph>
+			<Item2Launch>
+				<Type>To Common Doc Dir</Type>
+				<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 Parameter Page.vi</Path>
+			</Item2Launch>
+		</Page>
+		<Page>
+			<Name>
+				<eng>Message Section Page</eng>
+				<loc>Message Section Page</loc>
+			</Name>
+			<DisallowRenaming>true</DisallowRenaming>
+			<DeleteProtection>true</DeleteProtection>
+			<GUID>ECF4EF81-B0E5-4D2A-BF1C-47416AD3A19C</GUID>
+			<Glyph>
+				<Type>To Application Data Dir</Type>
+				<Path>System Explorer\Glyphs\NI-XNET RawDataFrame.png</Path>
+			</Glyph>
+			<Item2Launch>
+				<Type>To Common Doc Dir</Type>
+				<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 Message Page.vi</Path>
+			</Item2Launch>
+			<RunTimeMenu>
+				<MenuItem>
+					<GUID>DAA7CC11-B6D4-FBCD-3895-4014999F1774</GUID>
+					<Type>Action</Type>
+					<Name>
+						<eng>Add Data Parameter</eng>
+						<loc>Add Data Parameter</loc>
+					</Name>
+					<Item2Launch>
+						<Type>To Common Doc Dir</Type>
+						<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 - Add Data Channel.vi</Path>
+					</Item2Launch>
+				</MenuItem>
+				<MenuItem>
+					<GUID>DAA7CC11-B6D4-FBCD-3895-4014999F19E7</GUID>
+					<Type>VI</Type>
+					<Name>
+						<eng>Add Parameter...</eng>
+						<loc>Add Parameter...</loc>
+					</Name>
+					<Item2Launch>
+						<Type>To Common Doc Dir</Type>
+						<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 15533 - Add Multiple Channels.vi</Path>
+					</Item2Launch>
+				</MenuItem>
+				<MenuItem>
+					<GUID>644EA7BF-3EDA-68A5-99E8-463174E574AF</GUID>
+					<Type>Action</Type>
+					<Name>
+						<eng>Add Parameter For Each Bit</eng>
+						<loc>Add Parameter For Each Bit</loc>
+					</Name>
+					<Item2Launch>
+						<Type>To Common Doc Dir</Type>
+						<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\AIT 1553 - Add Multiple Bit Channels.vi</Path>
+					</Item2Launch>
+				</MenuItem>
+				<MenuItem>
+					<GUID>C4F6D306-C3D2-477F-8B0F-4F0FF7C0D36D</GUID>
+					<Type>Separator</Type>
+					<Name>
+						<eng>.</eng>
+						<loc>.</loc>
+					</Name>
+					<Item2Launch>
+						<Type>Absolute</Type>
+						<Path>.</Path>
+					</Item2Launch>
+				</MenuItem>
+				<MenuItem>
+					<GUID>03D3BE0A-1485-13A6-563AEB9BF271825A</GUID>
+					<Type>VI</Type>
+					<MinNrOfChilds>1</MinNrOfChilds>
+					<Name>
+						<eng>Delete Multiple Items</eng>
+						<loc>Delete Multiple Items</loc>
+					</Name>
+					<Item2Launch>
+						<Type>Absolute</Type>
+						<Path>Dialogs\Delete Multiple Items.vi</Path>
+					</Item2Launch>
+				</MenuItem>
+			</RunTimeMenu>
+			<ButtonList>
+				<Button>
+					<ID>NIVS_AIM1553_AddDataChannel</ID>
+					<Glyph>
+						<Type>To Application Data Dir</Type>
+						<Path>System Explorer\Glyphs\NI-XNET Add Signal.png</Path>
+					</Glyph>
+					<Type>Action</Type>
+					<ReferencedGUID>DAA7CC11-B6D4-FBCD-3895-4014999F1774</ReferencedGUID>
+					<ButtonText>
+						<eng>Add Data Parameter</eng>
+						<loc>Add Data Parameter</loc>
+					</ButtonText>
+					<Caption>
+						<eng>Add Data Parameter</eng>
+						<loc>Add Data Parameter</loc>
+					</Caption>
+					<TipStrip>
+						<eng>Add Data Parameter</eng>
+						<loc>Add Data Parameter</loc>
+					</TipStrip>
+					<Documentation>
+						<eng />
+						<loc />
+					</Documentation>
+				</Button>
+				<Button>
+					<ID>NIVS_AIM1553_AddLabelChannels</ID>
+					<Glyph>
+						<Type>To Application Data Dir</Type>
+						<Path>System Explorer\Glyphs\NI-XNET Add Signal.png</Path>
+					</Glyph>
+					<Type>Action</Type>
+					<ReferencedGUID>DAA7CC11-B6D4-FBCD-3895-4014999F19E7</ReferencedGUID>
+					<ButtonText>
+						<eng>Add Parameter...</eng>
+						<loc>Add Parameter...</loc>
+					</ButtonText>
+					<Caption>
+						<eng>Add Parameter...</eng>
+						<loc>Add Parameter...</loc>
+					</Caption>
+					<TipStrip>
+						<eng>Add Parameter...</eng>
+						<loc>Add Parameter...</loc>
+					</TipStrip>
+					<Documentation>
+						<eng />
+						<loc />
+					</Documentation>
+				</Button>
+				<Button>
+					<ID>NIVS_AIM1553_AddLabelBitChannels</ID>
+					<Glyph>
+						<Type>To Application Data Dir</Type>
+						<Path>System Explorer\Glyphs\NI-XNET Add RawData Channel.png</Path>
+					</Glyph>
+					<Type>Action</Type>
+					<ReferencedGUID>644EA7BF-3EDA-68A5-99E8-463174E574AF</ReferencedGUID>
+					<ButtonText>
+						<eng>Add Parameter For Each Bit</eng>
+						<loc>Add Parameter For Each Bit</loc>
+					</ButtonText>
+					<Caption>
+						<eng>Add Parameter For Each Bit</eng>
+						<loc>Add Parameter For Each Bit</loc>
+					</Caption>
+					<TipStrip>
+						<eng>Add Parameter For Each Bit</eng>
+						<loc>Add Parameter For Each Bit</loc>
+					</TipStrip>
+					<Documentation>
+						<eng />
+						<loc />
+					</Documentation>
+				</Button>
+			</ButtonList>
+		</Page>
+		<Page>
+			<Name>
+				<eng>Status Section</eng>
+				<loc>Status Section</loc>
+			</Name>
+			<DisallowRenaming>true</DisallowRenaming>
+			<DeleteProtection>true</DeleteProtection>
+			<GUID>2ECB6C91-3CC4-4FDF-AD6F-FA2D8CDB197F</GUID>
+			<Glyph>
+				<Type>To Application Data Dir</Type>
+				<Path>System Explorer\Glyphs\NI-XNET Status.png</Path>
+			</Glyph>
+			<Item2Launch>
+				<Type>To Common Doc Dir</Type>
+				<Path>Custom Devices\AIT 1553\AIT 1553 Configuration.llb\Status Section Page.vi</Path>
+			</Item2Launch>
+		</Page>
+		<Page>
+			<Name>
+				<eng>Channel (delete protected)</eng>
+				<loc>Channel (delete protected)</loc>
+			</Name>
+			<DisallowRenaming>true</DisallowRenaming>
+			<DeleteProtection>true</DeleteProtection>
+			<GUID>D9567732-A0D4-4249-9D7D-90741D022DA7</GUID>
+			<Glyph>
+				<Type>To Application Data Dir</Type>
+				<Path>System Explorer\Glyphs\default fpga channel.png</Path>
+			</Glyph>
+			<Item2Launch>
+				<Type>Absolute</Type>
+				<Path>System UI VIs\Custom Device\Custom Device Channel.vi</Path>
+			</Item2Launch>
+			<RunTimeMenu />
+			<Help>
+				<Item2Launch>
+					<Type>To Base</Type>
+					<Path>Veristand.chm\Custom_Devices_SE.html</Path>
+				</Item2Launch>
+				<FileType>chm</FileType>
+			</Help>
+		</Page>
+	</Pages>
+	<CustomXML>
+		<Dummy></Dummy>
+	</CustomXML>
+</CustomDevice>

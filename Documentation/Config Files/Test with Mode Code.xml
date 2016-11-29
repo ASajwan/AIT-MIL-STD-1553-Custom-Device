@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel1553 xmlns="http://www.aviftech.com/Schemas/Databus/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.aviftech.com/Schemas/Databus/ file:///C:/Program%20Files%20(x86)/AIT/Flight%20Simulyzer%20(VISA)/AIT_1553.xsd" channelNumber="1" couplingMode="transformer" busAmplitude="100" protocol1553="1553B" responseTimeout="14">
+    <simulation>
+        <busController name="Bus A" externalTriggerLine="0" initialBus="primary" retryMode="alternate" serviceRequestAllowed="true" startOnExternalTrigger="false">
+            <milMessageBuffers>
+                <messageBuffer messageCount="1" messageBufferID="0">
+                    <messageData>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0001</dataWord>
+                        <dataWord>0002</dataWord>
+                        <dataWord>0003</dataWord>
+                        <dataWord>0004</dataWord>
+                        <dataWord>0005</dataWord>
+                        <dataWord>0006</dataWord>
+                        <dataWord>0007</dataWord>
+                        <dataWord>0008</dataWord>
+                        <dataWord>0009</dataWord>
+                        <dataWord>000A</dataWord>
+                        <dataWord>000B</dataWord>
+                        <dataWord>000C</dataWord>
+                        <dataWord>000D</dataWord>
+                        <dataWord>000E</dataWord>
+                        <dataWord>000F</dataWord>
+                        <dataWord>0010</dataWord>
+                        <dataWord>0011</dataWord>
+                        <dataWord>0012</dataWord>
+                        <dataWord>0013</dataWord>
+                        <dataWord>0014</dataWord>
+                        <dataWord>0015</dataWord>
+                        <dataWord>0016</dataWord>
+                        <dataWord>0017</dataWord>
+                        <dataWord>0018</dataWord>
+                        <dataWord>0019</dataWord>
+                        <dataWord>001A</dataWord>
+                        <dataWord>001B</dataWord>
+                        <dataWord>001C</dataWord>
+                        <dataWord>001D</dataWord>
+                        <dataWord>001E</dataWord>
+                        <dataWord>001F</dataWord>
+                    </messageData>
+                </messageBuffer>
+                <messageBuffer messageCount="1" messageBufferID="1">
+                    <messageData>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0005</dataWord>
+                        <dataWord>000A</dataWord>
+                        <dataWord>000F</dataWord>
+                        <dataWord>0014</dataWord>
+                        <dataWord>0019</dataWord>
+                        <dataWord>001E</dataWord>
+                        <dataWord>0023</dataWord>
+                        <dataWord>0028</dataWord>
+                        <dataWord>002D</dataWord>
+                        <dataWord>0032</dataWord>
+                        <dataWord>0037</dataWord>
+                        <dataWord>003C</dataWord>
+                        <dataWord>0041</dataWord>
+                        <dataWord>0046</dataWord>
+                        <dataWord>004B</dataWord>
+                        <dataWord>0050</dataWord>
+                        <dataWord>0055</dataWord>
+                        <dataWord>005A</dataWord>
+                        <dataWord>005F</dataWord>
+                        <dataWord>0064</dataWord>
+                        <dataWord>0069</dataWord>
+                        <dataWord>006E</dataWord>
+                        <dataWord>0073</dataWord>
+                        <dataWord>0078</dataWord>
+                        <dataWord>007D</dataWord>
+                        <dataWord>0082</dataWord>
+                        <dataWord>0087</dataWord>
+                        <dataWord>008C</dataWord>
+                        <dataWord>0091</dataWord>
+                        <dataWord>0096</dataWord>
+                        <dataWord>009B</dataWord>
+                    </messageData>
+                </messageBuffer>
+                <messageBuffer messageCount="1" messageBufferID="2">
+                    <messageData>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0019</dataWord>
+                        <dataWord>0032</dataWord>
+                        <dataWord>004B</dataWord>
+                        <dataWord>0064</dataWord>
+                        <dataWord>007D</dataWord>
+                        <dataWord>0096</dataWord>
+                        <dataWord>00AF</dataWord>
+                        <dataWord>00C8</dataWord>
+                        <dataWord>00E1</dataWord>
+                        <dataWord>00FA</dataWord>
+                        <dataWord>0113</dataWord>
+                        <dataWord>012C</dataWord>
+                        <dataWord>0145</dataWord>
+                        <dataWord>015E</dataWord>
+                        <dataWord>0177</dataWord>
+                        <dataWord>0190</dataWord>
+                        <dataWord>01A9</dataWord>
+                        <dataWord>01C2</dataWord>
+                        <dataWord>01DB</dataWord>
+                        <dataWord>01F4</dataWord>
+                        <dataWord>020D</dataWord>
+                        <dataWord>0226</dataWord>
+                        <dataWord>023F</dataWord>
+                        <dataWord>0258</dataWord>
+                        <dataWord>0271</dataWord>
+                        <dataWord>028A</dataWord>
+                        <dataWord>02A3</dataWord>
+                        <dataWord>02BC</dataWord>
+                        <dataWord>02D5</dataWord>
+                        <dataWord>02EE</dataWord>
+                        <dataWord>0307</dataWord>
+                    </messageData>
+                </messageBuffer>
+                <messageBuffer messageCount="1" messageBufferID="3">
+                    <messageData>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                    </messageData>
+                </messageBuffer>
+                <messageBuffer messageCount="1" messageBufferID="4">
+                    <messageData>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                    </messageData>
+                </messageBuffer>
+                <messageBuffer messageCount="1" messageBufferID="5">
+                    <messageData>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                        <dataWord>0000</dataWord>
+                    </messageData>
+                </messageBuffer>
+            </milMessageBuffers>
+            <milBCInstructions>
+                <milXferInstruction milXferID="0">
+                    <milXferBCRT name="Gun_One" rtAddress="11" rtSubAddress="10" wordCount="30" messageBufferID="0" milXferEnabled="true" milXferGapTime="14" milXferRetryEnabled="true" milXferExpectedResp="automatic" milXferStatusWordMask="11111111111"/>
+                </milXferInstruction>
+                <milXferInstruction milXferID="1">
+                    <milXferBCRT name="Gun_Two" rtAddress="11" rtSubAddress="5" wordCount="30" messageBufferID="1" milXferEnabled="true" milXferGapTime="14" milXferRetryEnabled="true" milXferExpectedResp="automatic" milXferStatusWordMask="11111111111"/>
+                </milXferInstruction>
+                <milXferInstruction milXferID="2">
+                    <milXferRTBC name="Get_It" rtAddress="5" rtSubAddress="4" wordCount="30" messageBufferID="2" milXferEnabled="true" milXferGapTime="14" milXferRetryEnabled="true" milXferExpectedResp="automatic" milXferStatusWordMask="11111111111"/>
+                </milXferInstruction>
+                <milXferInstruction milXferID="3">
+                    <milXferRTRT name="RT15-16" wordCount="30" messageBufferID="3" milXferEnabled="true" milXferGapTime="14" milXferRetryEnabled="true" milXferExpectedResp="automatic" milXferStatusWordMask="11111111111">
+                        <txRTAddresses rtAddress="16" rtSubAddress="16"/>
+                        <rxRTAddresses rtAddress="15" rtSubAddress="15"/>
+                    </milXferRTRT>
+                </milXferInstruction>
+                <milXferInstruction milXferID="4">
+                    <milXferMC name="My_Mode_Code" rtAddress="5" rtSubAddress="0" milModeCode="9_Reserved" messageBufferID="4" milXferEnabled="true" milXferGapTime="14" milXferRetryEnabled="true" milXferExpectedResp="automatic" milXferStatusWordMask="11111111111" direction="tx"/>
+                </milXferInstruction>
+                <milXferInstruction milXferID="5">
+                    <milXferMC name="Your_Mode_Code" rtAddress="11" rtSubAddress="0" milModeCode="17_Synchronize_Receive" messageBufferID="5" milXferEnabled="true" milXferGapTime="14" milXferRetryEnabled="true" milXferExpectedResp="automatic" milXferStatusWordMask="11111111111" direction="rx"/>
+                </milXferInstruction>
+            </milBCInstructions>
+            <milBCMinorFrames>
+                <milBCMinorFrame milBCMinorFrameID="0">
+                    <milXferRef milXferID="0"/>
+                    <milXferRef milXferID="1"/>
+                    <milXferRef milXferID="2"/>
+                    <milXferRef milXferID="3"/>
+                    <milXferRef milXferID="4"/>
+                    <milXferRef milXferID="5"/>
+                </milBCMinorFrame>
+            </milBCMinorFrames>
+            <milBCMajorFrames>
+                <milBCMajorFrame milMajorFrameID="0" minorFrameTime="50000">
+                    <minorFrameRef milBCMinorFrameID="0"/>
+                </milBCMajorFrame>
+            </milBCMajorFrames>
+        </busController>
+        <busMonitor bufferSize="0" statusWordMask="07FF" singleShot="false">
+            <illegalCommands>
+                <milAddressSet invert="false"/>
+            </illegalCommands>
+            <simpleFilter>
+                <milAddressSet invert="true">
+                    <modeCommand rtAddress="5" milModeCode="0_Dynamic_Bus_Control" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="0_Dynamic_Bus_Control" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="1_Synchronize_Transmit" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="1_Synchronize_Transmit" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="2_Transmit_Status_Word" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="2_Transmit_Status_Word" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="3_Initiate_Self_Test" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="3_Initiate_Self_Test" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="4_Transmitter_Shutdown" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="4_Transmitter_Shutdown" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="5_Override_Transmitter_Shutdown" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="5_Override_Transmitter_Shutdown" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="6_Inhibit_Terminal_Flag_Bit" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="6_Inhibit_Terminal_Flag_Bit" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="7_Override_Inhibit_Terminal_Flag_Bit" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="7_Override_Inhibit_Terminal_Flag_Bit" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="8_Reset_RT" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="8_Reset_RT" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="9_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="9_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="10_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="10_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="11_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="11_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="12_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="12_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="13_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="13_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="14_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="14_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="15_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="15_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="16_Transmit_Vector_Word" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="16_Transmit_Vector_Word" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="17_Synchronize_Receive" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="17_Synchronize_Receive" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="18_Transmit_Last_Command" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="18_Transmit_Last_Command" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="19_Transmit_Bit_Word" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="19_Transmit_Bit_Word" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="20_Selected_Transmitter_Shutdown" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="20_Selected_Transmitter_Shutdown" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="21_Override_Selected_Transmitter_Shutdown" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="21_Override_Selected_Transmitter_Shutdown" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="22_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="22_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="23_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="23_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="24_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="24_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="25_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="25_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="26_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="26_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="27_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="27_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="28_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="28_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="29_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="29_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="30_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="30_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="5" milModeCode="31_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="5" milModeCode="31_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="0_Dynamic_Bus_Control" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="0_Dynamic_Bus_Control" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="1_Synchronize_Transmit" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="1_Synchronize_Transmit" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="2_Transmit_Status_Word" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="2_Transmit_Status_Word" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="3_Initiate_Self_Test" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="3_Initiate_Self_Test" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="4_Transmitter_Shutdown" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="4_Transmitter_Shutdown" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="5_Override_Transmitter_Shutdown" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="5_Override_Transmitter_Shutdown" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="6_Inhibit_Terminal_Flag_Bit" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="6_Inhibit_Terminal_Flag_Bit" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="7_Override_Inhibit_Terminal_Flag_Bit" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="7_Override_Inhibit_Terminal_Flag_Bit" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="8_Reset_RT" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="8_Reset_RT" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="9_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="9_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="10_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="10_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="11_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="11_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="12_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="12_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="13_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="13_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="14_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="14_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="15_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="15_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="16_Transmit_Vector_Word" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="16_Transmit_Vector_Word" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="17_Synchronize_Receive" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="17_Synchronize_Receive" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="18_Transmit_Last_Command" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="18_Transmit_Last_Command" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="19_Transmit_Bit_Word" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="19_Transmit_Bit_Word" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="20_Selected_Transmitter_Shutdown" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="20_Selected_Transmitter_Shutdown" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="21_Override_Selected_Transmitter_Shutdown" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="21_Override_Selected_Transmitter_Shutdown" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="22_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="22_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="23_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="23_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="24_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="24_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="25_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="25_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="26_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="26_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="27_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="27_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="28_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="28_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="29_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="29_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="30_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="30_Reserved" direction="tx"/>
+                    <modeCommand rtAddress="11" milModeCode="31_Reserved" direction="rx"/>
+                    <modeCommand rtAddress="11" milModeCode="31_Reserved" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="1" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="1" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="2" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="2" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="3" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="3" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="4" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="4" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="5" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="5" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="6" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="6" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="7" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="7" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="8" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="8" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="9" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="9" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="10" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="10" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="11" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="11" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="12" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="12" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="13" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="13" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="14" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="14" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="15" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="15" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="16" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="16" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="17" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="17" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="18" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="18" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="19" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="19" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="20" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="20" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="21" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="21" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="22" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="22" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="23" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="23" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="24" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="24" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="25" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="25" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="26" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="26" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="27" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="27" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="28" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="28" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="29" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="29" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="30" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="30" direction="tx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="31" direction="rx"/>
+                    <subAddressCommand rtAddress="5" rtSubAddress="31" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="1" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="1" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="2" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="2" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="3" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="3" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="4" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="4" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="5" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="5" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="6" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="6" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="7" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="7" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="8" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="8" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="9" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="9" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="10" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="10" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="11" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="11" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="12" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="12" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="13" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="13" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="14" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="14" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="15" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="15" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="16" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="16" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="17" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="17" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="18" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="18" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="19" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="19" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="20" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="20" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="21" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="21" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="22" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="22" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="23" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="23" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="24" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="24" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="25" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="25" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="26" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="26" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="27" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="27" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="28" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="28" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="29" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="29" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="30" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="30" direction="tx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="31" direction="rx"/>
+                    <subAddressCommand rtAddress="11" rtSubAddress="31" direction="tx"/>
+                </milAddressSet>
+            </simpleFilter>
+        </busMonitor>
+    </simulation>
+    <remoteTerminals>
+        <remoteTerminal rtAddress="5" name="RT5SA4"/>
+        <remoteTerminal rtAddress="11" name="RT11SA5"/>
+    </remoteTerminals>
+</channel1553>
